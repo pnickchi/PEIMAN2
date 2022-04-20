@@ -1,6 +1,7 @@
-#' Controlled vocabulary of posttranslational modifications (PTM)
+#' Controlled vocabulary for post-translational modifications (PTM) terms
 #'
-#' A dataset containing posttranslational modification information. The variables are as follows:
+#'  This dataframe lists the posttranslational modifications used in the UniProt knowledgebase (Swiss-Prot and TrEMBL).
+#'  The columns in this dataframe are as follows:
 #'
 #' \itemize{
 #'   \item ID Identifier (FT description)
