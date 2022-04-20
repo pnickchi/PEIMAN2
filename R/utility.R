@@ -10,15 +10,6 @@ getProteinsperPTM = function(x){
 
 
 
-getPEIMANDatabase = function(){
-
-  # To do list:
-  # This function reads the dataset from a repository (either a webpage or from GitHub)
-  # This is the last which is going to be complete
-
-}
-
-
 findMaxProf = function(x, mx){
 
   prof <- x$phit - x$pmiss
