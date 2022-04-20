@@ -1,0 +1,25 @@
+Package: PEIMAN
+Title: Post-translationsl, Enrichment, Integration, and Matching
+        ANalysis
+Version: 0.1.0
+Authors@R: c(
+ person("Mohieddin", "Jafari", role = c("aut"),email = "mohieddin.jafari@helsinki.fi"),
+ person("Payman", "Nickchi", role = c("aut","cre"),email = "pnickchi@sfu.ca")
+ ) 
+Description: Functions and mined database from UniProt for single enrichment analysis (SEA) and protein set enrichment analysis (PSEA) of a list of protein.
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+VignetteBuilder: knitr
+Depends: R (>= 2.10), tidyverse
+Imports: cli, tidyr, ggplot2, dplyr, ggrepel, glue, lifecycle, purrr,
+        rlang, stringr, summarytools, utils, withr, graphics (>=
+        4.1.3), stats, forcats
+Suggests: knitr, rmarkdown, testthat (>= 3.0.0)
+LazyData: true
+NeedsCompilation: no
+Packaged: 2022-04-20 01:37:04 UTC; payma
+Author: Mohieddin Jafari [aut],
+  Payman Nickchi [aut, cre]
+Maintainer: Payman Nickchi <pnickchi@sfu.ca>
