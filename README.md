@@ -19,7 +19,7 @@ protein set enrichment analysis (PSEA) in a list of protein.
 
 ## Installation
 
-You can install the released version of NIMAA from
+You can install the released version of PEIMAN from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
