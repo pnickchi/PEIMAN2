@@ -19,7 +19,7 @@ psea2mass = function(x, sig.level = 0.05, number.rep = NULL){
     temp <- temp %>% filter(FreqinUniProt >= number.rep)
   }
 
-  temp <- temp %>% arrange('FreqinList')
+  temp <- temp %>% arrange( desc(`FreqinList`) )
 
   pathway <- as.character(temp$PTM)
 

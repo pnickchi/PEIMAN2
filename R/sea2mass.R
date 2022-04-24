@@ -27,12 +27,12 @@ sea2mass = function(x, sig.level = 0.05, number.rep = NULL){
     x <- x %>% filter(`FreqinUniprot` >= number.rep)
   }
 
-  x <- x %>% arrange(`FreqinList`)
+  x <- x %>% arrange( desc(`FreqinList`) )
 
   pathway <- as.character(x$PTM)
 
   # look up each pathway in https://www.uniprot.org/docs/ptmlist.txt
-  temp    <- ptmlist %>% filter( ID %in% pathway )
+  temp <- ptmlist %>% filter( ID %in% pathway )
 
 
   # print name field from https://raw.githubusercontent.com/HUPO-PSI/psi-mod-CV/master/PSI-MOD.obo
