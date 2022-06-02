@@ -16,25 +16,39 @@ psea2mass = function(x, sig.level = 0.05, number.rep = NULL){
   temp    <- x[[1]] %>% filter( (nMoreExtreme / x[[6]]) <= sig.level )
 
   if( !is.null(number.rep) ){
-    temp <- temp %>% filter(FreqinUniProt >= number.rep)
+    temp <- temp %>% filter(FreqinList >= number.rep)
   }
 
-  temp <- temp %>% arrange( desc(`FreqinList`) )
+  pathway <- data.frame( PTM = as.character(temp$PTM), FreqinList = temp$FreqinList )
 
-  pathway <- as.character(temp$PTM)
+  res <- list()
+  for( i in 1:nrow(pathway) ){
 
-  # look up each pathway in https://www.uniprot.org/docs/ptmlist.txt
-  temp    <- ptmlist %>% filter( ID %in% pathway )
-  DR      <- temp$DR
+    indx <- which( str_detect(string = ptmlist$ID, pattern = pathway[i,'PTM'] ) )
+
+    if( length(indx) != 0 ){
+      res[[i]] <- cbind(ptmlist[indx,], pathway[i,2])
+    }
+
+  }
+
+
+  res <- do.call(rbind.data.frame, res)
+  colnames(res) <- c('ID', 'AC', 'KW', 'FT', 'MOD_ID', 'FreqinList')
+  res <- res %>% arrange(desc(FreqinList))
+
+  MOD_ID      <- res$MOD_ID
+  pseaMS      <- mod_ont %>% filter(id %in% MOD_ID)
+  pseaMS$def  <- str_replace(string = pseaMS$def, pattern = "A protein modification that effectively ", replacement = "")
+  colnames(pseaMS)[1] <- 'MOD_ID'
+
+  pseaMS <- pseaMS %>% left_join(res, 'MOD_ID') %>% select(c('MOD_ID', 'name', 'def', 'FreqinList')) %>% arrange(desc(FreqinList))
 
 
   # print name field from https://raw.githubusercontent.com/HUPO-PSI/psi-mod-CV/master/PSI-MOD.obo
-  res <- mod_ont %>% filter(id %in% DR)
+  # look up each pathway in https://www.uniprot.org/docs/ptmlist.txt
 
-  # Remove part of the definition column
-  res$def <- str_replace(string = res$def, pattern = 'A protein modification that effectively ', replacement = '')
-
-  return(res)
+  return(pseaMS)
 }
 
 
