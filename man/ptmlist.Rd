@@ -3,7 +3,7 @@
 \docType{data}
 \name{ptmlist}
 \alias{ptmlist}
-\title{Controlled vocabulary of posttranslational modifications (PTM)}
+\title{Controlled vocabulary for post-translational modifications (PTM) terms}
 \format{
 A data frame with 686 rows and 5 variables
 }
@@ -14,7 +14,8 @@ A data frame with 686 rows and 5 variables
 data(ptmlist)
 }
 \description{
-A dataset containing posttranslational modification information. The variables are as follows:
+This dataframe lists the posttranslational modifications used in the UniProt knowledgebase (Swiss-Prot and TrEMBL).
+The columns in this dataframe are as follows:
 }
 \details{
 \itemize{
