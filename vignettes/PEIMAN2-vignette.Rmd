@@ -50,8 +50,8 @@ We use the following datasets to demonstrate our work:
 1) `exmplData1`: This dataset contains two list of human proteins randomly selected from UniProt. The first list contains 45 randomly selected proteins. The second one contains of 97 randomly selected proteins. We use these lists for regular enrichment purposes. Both lists belongs to Homo Sapiens (Human). Note: Only the first 10 proteins in each list are shown.  
 
 ```{r show data1,echo=FALSE, results='asis', booktabs = TRUE}
-knitr::kable( head(PEIMAN::exmplData1$pl1), col.names = '', caption = '')
-knitr::kable( head(PEIMAN::exmplData1$pl2), col.names = '', caption = '')
+knitr::kable( head(PEIMAN2::exmplData1$pl1), col.names = '', caption = '')
+knitr::kable( head(PEIMAN2::exmplData1$pl2), col.names = '', caption = '')
 ```
 
 2) `exmplData2`: For an example data to perform protein set enrichment analysis, we consider dataset described in [@gholizadeh2021]. 
@@ -68,7 +68,7 @@ In this section, we introduce the functions for singular enrichment analysis (SE
 We can use `runEnrichment()` function to run singular enrichment analysis in one list. This function takes proteins identified by their UniProt accession code, along with taxonomy name of species and returns a dataframe with PTM lists. Let's look at 97 randomly selected human proteins from UniProt to illustrate how this function works. This data is saved as a vector of characters in `exmplData1`. 
 <!-- Please avoid using '=' for object assignment use '<-' -->
 ```{r}
-library(PEIMAN)
+library(PEIMAN2)
 pl1 <- exmplData1$pl1
 pl1[1:10]
 ```
