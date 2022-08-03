@@ -5,9 +5,9 @@ peiman <- function(pro, os, am){
   # os: OS name
   # am: adjustment method
   #
-  # Note: This function is internal. No need to check the input arguments
+  # Note: This function is internal.
+  # No need to check the inputs arguments
   #
-
 
   if (!requireNamespace('dplyr', quietly = TRUE)) {
     stop(
@@ -16,12 +16,11 @@ peiman <- function(pro, os, am){
     )
   }
 
-  #library(dplyr)
 
-
+  #
   # Filter peiman database to include proteins
+  #
   tempDatabase <- peiman_database %>% filter(OS == os)
-
 
   # Identify which proteins are available in the current version of peiman database
   # Define list of proteins that are not available in the database
