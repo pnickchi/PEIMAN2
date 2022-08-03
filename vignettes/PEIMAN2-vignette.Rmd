@@ -57,7 +57,7 @@ knitr::kable( head(PEIMAN::exmplData1$pl2), col.names = '', caption = '')
 2) `exmplData2`: For an example data to perform protein set enrichment analysis, we consider dataset described in [@gholizadeh2021]. 
 
 ```{r show data2,echo=FALSE, results='asis'}
-knitr::kable(PEIMAN::exmplData2[1:6,], caption='beatAML dataset samples')
+knitr::kable(PEIMAN2::exmplData2[1:6,], caption='beatAML dataset samples')
 ```
 
 
