@@ -27,16 +27,11 @@ knitr::opts_chunk$set(
 
 
 ## 1 Introduction
-This section briefly describes:    
 
-- Introduction to PEIMAN v1    
-The annotation enrichment analysis increases the chance of identifying relevant biological pathways in a list of genes or proteins. The post translational enrichment, integration, and matching analysis (PEIMAN v1) software was introduced to provide a systematic framework to identify more probable and enriched post-translational modification (PTM) terms in a list of proteins obtained from high-throughput technologies [@nickchi2015]. PEIMAN maps a large list of proteins to PTM pathways and test for their statistical significance, using a hypergeometric test. PEIMAN uses the most traditional way of enrichment analysis, by getting a list of proteins selected by user, and search for enriched PTM terms one by one. This strategy is called Singular Enrichment Analysis (SEA). Although this is a very promising approach for identifying biological pathways, the quality of selected list by researcher can potentially affect results at the end of the analysis.   
+The annotation enrichment analysis increases the chance of identifying relevant biological pathways in a list of genes or proteins. The post translational enrichment, integration, and matching analysis (PEIMAN v1) software was introduced to provide a systematic framework to identify more probable and enriched post-translational modification (PTM) terms in a list of proteins obtained from high-throughput technologies [@nickchi2015]. PEIMAN maps a large list of proteins to PTM pathways and test for their statistical significance, using a hypergeometric test. PEIMAN uses the most traditional way of enrichment analysis, by getting a list of proteins selected by user, and search for enriched PTM terms one by one. This strategy is called Singular Enrichment Analysis or SEA. Although this is a very promising approach for identifying biological pathways, the quality of selected list by researcher can potentially affect results at the end of the analysis.   
 
-- The problem this package is trying to solve now    
-To avoid this, we extend our enrichment framework to a wider class of enrichment analysis called Gene Set Enrichment Analysis or GSEA [@Subramanian2005]. The underlying idea of GSEA is very similar to SEA. Instead of applying a cutoff on input genes obtained from micro array experiments (either p-value or fold-change in gene expression), a 'no-cutoff' strategy is considered. The immediate benefits of this approach is to reduce the bias of gene selection and include genes with a low change in their expression level to participate in final analysis. The maximum value of the running score profile for ranked genes in each enrichment category is then calculated and compared with random scores obtained from permutation. More details on [@Subramanian2005]. This framework can be expanded to enrichment analysis in proteins. Inspired by GSEA idea, we here introduce a package in R for Protein Set Enrichment Analysis (PSEA).  
+To avoid this problem, we extend our enrichment framework to a wider class of enrichment analysis called Gene Set Enrichment Analysis or GSEA [@Subramanian2005]. The underlying idea of GSEA is very similar to SEA. Instead of applying a cutoff on input genes obtained from micro array experiments (either p-value or fold-change in gene expression), a 'no-cutoff' strategy is considered. The immediate benefits of this approach is to reduce the bias of gene selection and include genes with a low change in their expression level to participate in final analysis. The maximum value of the running score profile for ranked genes in each enrichment category is then calculated and compared with random scores obtained from permutation. More details on [@Subramanian2005]. This framework can be expanded to enrichment analysis in proteins. Inspired by GSEA idea, we here introduce a package in R for Protein Set Enrichment Analysis (PSEA).  
 
-
-- Different features of this package    
 The database in PEIMAN package updates monthly according to changes in UniProt. The package can be used to perform singular enrichment analysis (SEA) and visualize the results. PEIMAN can also be used to match and integrate results of two SEA analysis (for the same species) by visualizing their common pathways. To correct for biases in SEA, we implement protein set enrichment analysis (PSEA) as a new tool for computational community. Researchers can use this package to run PSEA and visualize the results. (To do list PN with help from MJ: Add some details about MS part for package features)
 
 
@@ -46,15 +41,17 @@ The database in PEIMAN package updates monthly according to changes in UniProt. 
 
 
 ## 2 Example data
-We use the following datasets to demonstrate our work:   
-1) `exmplData1`: This dataset contains two list of human proteins randomly selected from UniProt. The first list contains 45 randomly selected proteins. The second one contains of 97 randomly selected proteins. We use these lists for regular enrichment purposes. Both lists belongs to Homo Sapiens (Human). Note: Only the first 10 proteins in each list are shown.  
+
+We consider two example datasets to demonstrate the features of our package. 
+
+1) `exmplData1`: We use the first example data for single enrichment analysis. This dataset contains two list of human proteins randomly selected from UniProt. The first list contains 45 proteins and the second list contains of 97 randomly selected proteins. Both lists belongs to Homo Sapiens (Human). Note: Only the first six proteins in each list are shown below.
 
 ```{r show data1,echo=FALSE, results='asis', booktabs = TRUE}
 knitr::kable( head(PEIMAN2::exmplData1$pl1), col.names = '', caption = '')
 knitr::kable( head(PEIMAN2::exmplData1$pl2), col.names = '', caption = '')
 ```
 
-2) `exmplData2`: For an example data to perform protein set enrichment analysis, we consider dataset described in [@gholizadeh2021]. 
+2) `exmplData2`: We will use the second dataset to perform protein set enrichment analysis or PSEA. The dataset is described in [@gholizadeh2021]. 
 
 ```{r show data2,echo=FALSE, results='asis'}
 knitr::kable(PEIMAN2::exmplData2[1:6,], caption='beatAML dataset samples')
@@ -62,27 +59,36 @@ knitr::kable(PEIMAN2::exmplData2[1:6,], caption='beatAML dataset samples')
 
 
 ## 3 Singular Enrichment analysis (SEA)
-In this section, we introduce the functions for singular enrichment analysis (SEA). The functions in this section are divided into two parts, functions for enrichment and functions for plotting. We use `exmplData1` in this part.
+
+In this section, we introduce the functions related to singular enrichment analysis or SEA in PEIMAN2 package. The functions in this section are divided into two parts, functions for enrichment and functions for plotting. We use `exmplData1` in this part.
+
 
 ### 3.1 Enrichment   
-We can use `runEnrichment()` function to run singular enrichment analysis in one list. This function takes proteins identified by their UniProt accession code, along with taxonomy name of species and returns a dataframe with PTM lists. Let's look at 97 randomly selected human proteins from UniProt to illustrate how this function works. This data is saved as a vector of characters in `exmplData1`. 
-<!-- Please avoid using '=' for object assignment use '<-' -->
+
+`runEnrichment()` function can be used to run singular enrichment analysis for one list of protein. This function takes the following inputs:
+
+- `protein` which is a character vector with protein UniProt accession codes.
+- `os.name` which is a character vector of length one with exact taxonomy name of species.
+- `p.adj.method` which is pvalue adjustment methos and optional. By default the value is set to 'BH'. To see a possible list of values, type `p.adjust.methods` in R console.   
+
+As it was mentioned, the taxonomy name of species must be provided, e.g for a list of proteins belongs to human we pass `os.name` as 'Homo sapiens (Human)'. The list is available at UniProt website. We also included a helper function named `getTaxonomyName` to help getting the exact taxonomy name. More on this function later.
+
+The following lines of code illustrate the steps to run SEA on `exmplData1`. In `runEnrichment` function, we pass `pl1` (a character vector of UniProt accession code) to perform SEA as follows and save the results in `enrich1`. 
+
+
 ```{r}
+# Load PEIMAN2 package
 library(PEIMAN2)
+
+# Extract dataset and assign a variable name to it
 pl1 <- exmplData1$pl1
-pl1[1:10]
-```
 
-
-In `runEnrichment` function, we pass pl1 and os.name to perform SEA as follows and save the results in "enrich1". 
-
-```{r}
+# Run SEA on the list
 enrich1 <- runEnrichment(protein = pl1, os.name = 'Homo sapiens (Human)')
-knitr::kable(enrich1, format = 'html')
 ```
 
 
-The results saved in "enrich1" is a dataframe with the following columns:
+The function returns a dataframe with the following columns:
 
 - `PTM`: Post-translational modification (PTM) pathway/keyword.
 - `Freq in Uniprot`: The total number of proteins with this PTM in UniProt.
@@ -94,28 +100,37 @@ The results saved in "enrich1" is a dataframe with the following columns:
 - `AC`: Uniprot accession code (AC) of proteins with each PTM.
 
 
-The os.name is the exact taxonomy name of species that you are working with. The name should be exactly the same as UniProt definition. To facilitate searching for this name, you can pass your protein list with UniProt accession ID to `getTaxonomyName` function as follows. The result is the exact taxonomy name of protein list. In the following example, the exact taxonomy name is printed: 
+```{r echo = FALSE}
+knitr::kable( head(enrich1), format = 'html')
+```
+
+Note: As it was mentioned, the os.name is the exact taxonomy name of species that you are working with. The name should be exactly the same as UniProt definition. To facilitate searching for this name, you can pass your protein list with UniProt accession ID to `getTaxonomyName` function as follows. The result is the exact taxonomy name of protein list that you need to pass to `runEnrichment`. In the following example, the exact taxonomy name is printed: 
 
 ```{r}
 getTaxonomyName(x = exmplData1$pl1)
 ```
 
 
-Note: By default, p-values are adjusted by "BH" method. You can change this behavior by passing your desired method to `p.adj.method` argument in `runEnrichment`. In console, run `p.adjust.methods` to get a list of possible values.
-
-
 Similarly, we can run SEA for the second list of proteins:
 
 ```{r}
+# Extract dataset and assign a variable name to it
 pl2 <- exmplData1$pl2
+
+# Run SEA on the list
 enrich2 <- runEnrichment(protein = pl2, os.name = 'Homo sapiens (Human)')
-knitr::kable(enrich2, format = 'html')
+```
+
+
+```{r echo = FALSE}
+knitr::kable( head(enrich2), format = 'html')
 ```
 
 
 
-### 3.2 Plotting    
-The `plotEnrichment` function allows researchers to visualize singular enrichment analysis for one set of proteins or match, analyse, and integrate results for two sets of proteins. To read more about this match and integration, please read details at [@nickchi2015]. We start by plotting the results of one analysis.
+### 3.2 Plotting SEA results  
+
+The `plotEnrichment` function can be used to visualize singular enrichment analysis for one set of proteins or match, analyse, and integrate results for two sets of proteins. To read more about this match and integration, please read details at [@nickchi2015]. We start by plotting the results for the firs list.
 
 ```{r fig.dim = c(8, 6)}
 plotEnrichment(x = enrich1, sig.level = 0.05)
@@ -129,6 +144,7 @@ plotEnrichment(x = enrich1, y = enrich2, sig.level = 0.05)
 ```
 
 The plot presents the 'Relative frequency' of common PTM terms among two enriched list (x and y). The coloring is the corrected p-value measured in log scale. By default a significance level of 5 percent is set to filter results. This can be modified by `sig.level` parameter. 
+
 
 
 
@@ -188,6 +204,7 @@ plotRunningScore(x = psea_res)
 ```
 
 
+
 ## 5. Translate PEIMAN results for Mass spectrometry searching tools
 <!-- Add this section also based on our last discussion to add one or two more functions -->
 
@@ -199,6 +216,7 @@ MS
 
 # enrichment2mass
 ```
+
 
 
 
