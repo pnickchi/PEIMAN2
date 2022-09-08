@@ -13,7 +13,7 @@ Releases](https://img.shields.io/github/downloads/jafarilab/PEIMAN2/total.svg?st
 
 <!-- badges: end -->
 
-The PEIMAN package \[@PEIMAN\] provides functions and mined database from UniProt for single enrichment analysis (SEA) and 
+The PEIMAN2 package \[@PEIMAN\] provides functions and mined database from UniProt for single enrichment analysis (SEA) and 
 protein set enrichment analysis (PSEA) in a list of protein.
 
 
