@@ -35,6 +35,28 @@ devtools::install_github("jafarilab/PEIMAN2")
 
 ## Example
 
+### Singular Enrichment Analysis (SEA)
+
+``` r
+# Load PEIMAN2 package
+library(PEIMAN2)
+
+# Extract dataset and assign a variable name to it
+pl1 <- exmplData1$pl1
+
+# Run SEA on the list
+enrich1 <- runEnrichment(protein = pl1, os.name = 'Homo sapiens (Human)')
+
+head(enrich1, n = 6)
+```
+
+### Plotting SEA
+
+```r
+plotEnrichment(x = enrich1, sig.level = 0.05)
+```
+
+
 ## License
 
 [![GPLv3
