@@ -67,6 +67,9 @@ enrich2 <- runEnrichment(protein = pl2, os.name = 'Homo sapiens (Human)')
 plotEnrichment(x = enrich1, sig.level = 0.05)
 ```
 
+<img src="vignettes/vignettes_fig2.png" title="Plot of singular enrichment analysis in the first list" alt="" width="100%" style="display: block; margin: auto;" />
+
+
 
 ```r
 plotEnrichment(x = enrich1, y = enrich2, sig.level = 0.05)
