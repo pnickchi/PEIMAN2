@@ -1,6 +1,6 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# PEIMAN2 <a href='https://github.com/jafarilab/PEIMAN2'><img src="man/figures/logo.png" align="right" height="139"/></a>
+# PEIMAN2 <a href='https://github.com/jafarilab/PEIMAN2'><img src="man/figures/logo.jpg" align="right" height="139"/></a>
 
 <!-- badges: start -->
 
@@ -13,7 +13,7 @@ Releases](https://img.shields.io/github/downloads/jafarilab/PEIMAN2/total.svg?st
 
 <!-- badges: end -->
 
-The PEIMAN package \[@PEIMAN\] provides functions and mined database from UniProt for single enrichment analysis (SEA) and 
+The PEIMAN2 package \[@PEIMAN\] provides functions and mined database from UniProt for single enrichment analysis (SEA) and 
 protein set enrichment analysis (PSEA) in a list of protein.
 
 
@@ -34,6 +34,64 @@ devtools::install_github("jafarilab/PEIMAN2")
 ```
 
 ## Example
+
+### Singular Enrichment Analysis (SEA)
+
+``` r
+# Load PEIMAN2 package
+library(PEIMAN2)
+
+# First example dataset
+pl1 <- exmplData1$pl1
+
+# Run SEA on the list
+enrich1 <- runEnrichment(protein = pl1, os.name = 'Homo sapiens (Human)')
+
+head(enrich1, n = 6)
+```
+
+
+``` r
+# Second example dataset
+pl1 <- exmplData1$pl2
+
+# Run SEA on the list
+enrich2 <- runEnrichment(protein = pl2, os.name = 'Homo sapiens (Human)')
+```
+
+
+### Plotting SEA
+
+```r
+plotEnrichment(x = enrich1, sig.level = 0.05)
+```
+
+
+```r
+plotEnrichment(x = enrich1, y = enrich2, sig.level = 0.05)
+```
+
+
+### Protein Set Enrichment Analysis (PSEA)
+
+``` r
+psea_res <- runPSEA(protein = exmplData2, os.name = 'Rattus norvegicus (Rat)', nperm = 1000)
+psea_res[[1]]
+```
+
+### Plotting PSEA
+
+``` r
+plotRunningScore(x = psea_res)
+```
+
+
+### Translate PEIMAN results for Mass spectrometry searching tools
+
+``` r
+MS <- psea2mass(x = psea_res, sig.level = 0.05)
+```
+
 
 ## License
 
