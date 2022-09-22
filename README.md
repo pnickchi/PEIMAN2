@@ -61,7 +61,7 @@ enrich2 <- runEnrichment(protein = pl2, os.name = 'Homo sapiens (Human)')
 ```
 
 
-### Plotting SEA
+### Plotting SEA for one list
 
 ```r
 plotEnrichment(x = enrich1, sig.level = 0.05)
@@ -69,6 +69,9 @@ plotEnrichment(x = enrich1, sig.level = 0.05)
 <img src="vignettes/vignettes_fig2.png" title="Plot of singular enrichment analysis in the first list" alt="" width="100%" style="display: block; margin: auto;" />
 
 
+
+
+### Integration and matching analysis of two lists
 
 ```r
 plotEnrichment(x = enrich1, y = enrich2, sig.level = 0.05)
@@ -80,7 +83,7 @@ plotEnrichment(x = enrich1, y = enrich2, sig.level = 0.05)
 
 ``` r
 psea_res <- runPSEA(protein = exmplData2, os.name = 'Rattus norvegicus (Rat)', nperm = 1000)
-psea_res[[1]]
+View(psea_res[[1]])
 ```
 
 ### Plotting PSEA
