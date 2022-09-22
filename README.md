@@ -72,6 +72,27 @@ plotEnrichment(x = enrich1, y = enrich2, sig.level = 0.05)
 ```
 
 
+### Protein Set Enrichment Analysis (PSEA)
+
+``` r
+psea_res <- runPSEA(protein = exmplData2, os.name = 'Rattus norvegicus (Rat)', nperm = 1000)
+psea_res[[1]]
+```
+
+### Plotting PSEA
+
+``` r
+plotRunningScore(x = psea_res)
+```
+
+
+### Translate PEIMAN results for Mass spectrometry searching tools
+
+``` r
+MS <- psea2mass(x = psea_res, sig.level = 0.05)
+```
+
+
 ## License
 
 [![GPLv3
