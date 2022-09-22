@@ -1,6 +1,6 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# PEIMAN2 <a href='https://github.com/jafarilab/PEIMAN2'><img src="man/figures/logo.jpg" align="right" height="139"/></a>
+# PEIMAN2 <a href='https://github.com/jafarilab/PEIMAN2'><img src="vignettes/logo.jpg" align="right" height="139"/></a>
 
 <!-- badges: start -->
 
