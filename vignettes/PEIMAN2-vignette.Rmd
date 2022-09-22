@@ -191,7 +191,7 @@ We now introduce the plotting features for protein set enrichment analysis. Two 
 
 
 ```{r fig.dim = c(10,8)}
-#plotPSEA(x = psea_res)
+plotPSEA(x = psea_res)
 ```
 
 <!-- I think it is better to improve label size inside plot -->
