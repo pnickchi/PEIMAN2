@@ -41,7 +41,7 @@ devtools::install_github("jafarilab/PEIMAN2")
 # Load PEIMAN2 package
 library(PEIMAN2)
 
-# Extract dataset and assign a variable name to it
+# First example dataset
 pl1 <- exmplData1$pl1
 
 # Run SEA on the list
@@ -50,10 +50,25 @@ enrich1 <- runEnrichment(protein = pl1, os.name = 'Homo sapiens (Human)')
 head(enrich1, n = 6)
 ```
 
+
+``` r
+# Second example dataset
+pl1 <- exmplData1$pl2
+
+# Run SEA on the list
+enrich2 <- runEnrichment(protein = pl2, os.name = 'Homo sapiens (Human)')
+```
+
+
 ### Plotting SEA
 
 ```r
 plotEnrichment(x = enrich1, sig.level = 0.05)
+```
+
+
+```r
+plotEnrichment(x = enrich1, y = enrich2, sig.level = 0.05)
 ```
 
 
