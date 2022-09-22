@@ -166,7 +166,7 @@ of possible methods.
 <!-- No need to show the progress bar -->
 
 ```{r}
-psea_res <- runPSEA(protein = exmplData2, os.name = 'Rattus norvegicus (Rat)', nperm = 100)
+psea_res <- runPSEA(protein = exmplData2, os.name = 'Rattus norvegicus (Rat)', nperm = 1000)
 ```
 
 The result is a list with 6 elements. The first element of this list is important: A dataframe with protein set enrichment analysis (PSEA) results. Every row corresponds to a post-translational modification (PTM) pathway with the following columns:
