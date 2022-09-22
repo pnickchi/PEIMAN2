@@ -66,7 +66,6 @@ enrich2 <- runEnrichment(protein = pl2, os.name = 'Homo sapiens (Human)')
 ```r
 plotEnrichment(x = enrich1, sig.level = 0.05)
 ```
-
 <img src="vignettes/vignettes_fig2.png" title="Plot of singular enrichment analysis in the first list" alt="" width="100%" style="display: block; margin: auto;" />
 
 
@@ -74,6 +73,7 @@ plotEnrichment(x = enrich1, sig.level = 0.05)
 ```r
 plotEnrichment(x = enrich1, y = enrich2, sig.level = 0.05)
 ```
+<img src="vignettes/vignettes_fig3.png" title="Integration and matching analysis plot of two singular enrichment analysis" alt="" width="100%" style="display: block; margin: auto;" />
 
 
 ### Protein Set Enrichment Analysis (PSEA)
@@ -84,6 +84,12 @@ psea_res[[1]]
 ```
 
 ### Plotting PSEA
+
+``` r
+plotPSEA(x = psea_res)
+```
+<img src="vignettes/vignettes_fig4.png" title="Plot of protein set enrichment analysis" alt="" width="100%" style="display: block; margin: auto;" />
+
 
 ``` r
 plotRunningScore(x = psea_res)
