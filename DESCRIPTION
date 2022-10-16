@@ -14,7 +14,7 @@ RoxygenNote: 7.2.1
 VignetteBuilder: knitr
 Depends: R (>= 2.10), tidyverse
 Imports: cli, tidyr, ggplot2, dplyr, ggrepel, glue, lifecycle, purrr,
-        rlang, stringr, summarytools, utils, withr, graphics (>=
+        rlang, stringr, summarytools, utils, withr, magrittr, graphics (>=
         4.1.3), stats, forcats
 Suggests: knitr, rmarkdown, testthat (>= 3.0.0)
 LazyData: true
