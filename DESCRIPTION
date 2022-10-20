@@ -19,7 +19,7 @@ Imports: cli, tidyr, ggplot2, dplyr, ggrepel, glue, lifecycle, purrr,
 Suggests: knitr, rmarkdown, testthat (>= 3.0.0)
 LazyData: true
 NeedsCompilation: no
-Packaged: 2022-04-20 01:37:04 UTC; payma
+Packaged: 2022-10-20 01:37:04 UTC; payma
 Author: Mohieddin Jafari [aut],
   Payman Nickchi [aut, cre]
 Maintainer: Payman Nickchi <pnickchi@sfu.ca>
