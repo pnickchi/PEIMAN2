@@ -50,7 +50,7 @@
 #'   \item{pl2}{45 randomly selected Homo sapiens (Human) proteins randomly selected from UniProt.}
 #'   ...
 #' }
-#' @source \url{http://www.uniprot.org/}
+#' @source \url{https://www.uniprot.org/}
 'exmplData1'
 
 
@@ -65,5 +65,5 @@
 #'   \item{Score}{Check with MJ}
 #'   ...
 #' }
-#' @source \url{https://doi.org/10.1124/molpharm.120.000210}
+#' @source \doi{molpharm.120.000210}
 'exmplData2'

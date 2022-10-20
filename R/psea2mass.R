@@ -44,11 +44,10 @@ psea2mass = function(x, sig.level = 0.05, number.rep = NULL){
 
   pseaMS <- pseaMS %>% left_join(res, 'MOD_ID') %>% select(c('MOD_ID', 'name', 'def', 'FreqinList')) %>% arrange(desc(FreqinList))
 
-
-  # print name field from https://raw.githubusercontent.com/HUPO-PSI/psi-mod-CV/master/PSI-MOD.obo
-  # look up each pathway in https://www.uniprot.org/docs/ptmlist.txt
-
   return(pseaMS)
+
+  # Source: https://raw.githubusercontent.com/HUPO-PSI/psi-mod-CV/master/PSI-MOD.obo
+
 }
 
 

@@ -13,7 +13,7 @@ A list with 2 elements:
 }
 }
 \source{
-\url{http://www.uniprot.org/}
+\url{https://www.uniprot.org/}
 }
 \usage{
 exmplData1
