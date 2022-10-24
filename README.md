@@ -89,7 +89,7 @@ View(psea_res[[1]])
 ### Plotting PSEA
 
 ``` r
-plotPSEA(x = psea_res, number.rep = 10)
+plotPSEA(x = psea_res, number.rep = 20)
 ```
 <img src="vignettes/vignettes_fig4.png" title="Plot of protein set enrichment analysis" alt="" width="100%" style="display: block; margin: auto;" />
 
