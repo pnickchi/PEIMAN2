@@ -102,7 +102,7 @@ plotRunningScore(x = psea_res)
 ### Translate PEIMAN results for Mass spectrometry searching tools
 
 ``` r
-MS <- psea2mass(x = psea_res, sig.level = 0.05)
+(MS <- psea2mass(x = psea_res, sig.level = 0.05))
 ```
 
 
