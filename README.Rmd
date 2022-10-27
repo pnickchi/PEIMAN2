@@ -8,7 +8,14 @@ date: "2022-10-27"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## PEIMAN2
+# PEIMAN2 <a href='https://github.com/pnickchi/PEIMAN2/'><img src="vignettes/logo.png" align="right" height="139"/></a>
+
+<!-- badges: start -->
+
+[![CRAN status](https://www.r-pkg.org/badges/version/PEIMAN2)](https://cran.r-project.org/package=PEIMAN2) [![GitHub Release](https://img.shields.io/github/release/jafarilab/PEIMAN2?style=flat)](https://github.com/jafarilab/PEIMAN2/releases) [![Github All Releases](https://img.shields.io/github/downloads/jafarilab/PEIMAN2/total.svg?style=flat)](https://github.com/jafarilab/PEIMAN2)
+
+<!-- badges: end -->
+
 
 The PEIMAN2 package \[@PEIMAN2\] provides functions and mined database from UniProt for single enrichment analysis (SEA) and protein set enrichment analysis (PSEA) in a list of protein. The database is updated regularly with monthly changes in UniProt/SwissProt repository. To ensure you have the latest version of database, make sure to install the package from GitHub. 
 
