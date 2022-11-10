@@ -12,7 +12,9 @@ utils::globalVariables(
     'Population',
     'NES',
     'Group',
+    'pvalue',
     'ppvalue',
+    'ptmlist',
     'size',
     'Enrichment',
     'FreqinUniprot',
@@ -20,6 +22,7 @@ utils::globalVariables(
     'logCorrectPvalue',
     'mymean',
     'FreqinUniProt',
-    '`corrected pvalue`'
+    'corrected pvalue',
+    'mod_ont'
   )
 )

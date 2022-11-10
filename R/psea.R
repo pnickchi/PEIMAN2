@@ -1,3 +1,5 @@
+#' @importFrom magrittr %>%
+#' @importFrom dplyr arrange
 psea <- function(x, y, p, perm){
 
   # x = the same as D in the paper, with N proteins

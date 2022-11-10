@@ -28,6 +28,8 @@
 #' - leadingEdge:
 #' @export
 #'
+#' @importFrom stats p.adjust.methods
+#'
 #' @examples
 #' psea_res <- runPSEA(protein = exmplData2, os.name = 'Rattus norvegicus (Rat)', nperm = 100)
 runPSEA = function(protein, os.name, pexponent = 1, nperm = 1000, p.adj.method = 'fdr', sig.level = 0.05, minSize = 1){

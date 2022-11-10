@@ -1,3 +1,7 @@
+#' @importFrom magrittr %>%
+#' @importFrom stats phyper
+#' @importFrom stats p.adjust
+#' @importFrom dplyr arrange
 peiman <- function(pro, os, am){
 
   #

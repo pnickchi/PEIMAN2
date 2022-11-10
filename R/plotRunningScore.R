@@ -17,7 +17,7 @@
 #'
 #' @export
 #'
-#' @importFrom graphics abline rug
+#' @importFrom graphics abline rug par
 #'
 #' @examples
 #' psea_res <- runPSEA(protein = exmplData2, os.name = 'Rattus norvegicus (Rat)', nperm = 100)
