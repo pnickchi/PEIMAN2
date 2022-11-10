@@ -1,5 +1,7 @@
 #' Run Protein Set Enrichment Analysis (PSEA)
 #'
+#' @description This is the main function to run protein set enrichment analysis for a list of proteins and their score.
+#'
 #' @param protein A dataframe with two columns. Frist column should be protein accession code, second column is the score.
 #' @param os.name A character vector of length one with exact taxonomy name of species. If you do not know the
 #' the exact taxonomy name of species you are working with, please read \code{\link{getTaxonomyName}}.

@@ -1,6 +1,6 @@
 #' Plot the results of protein set enrichment analysis (PSEA)
 #'
-#' #' plotPSEA can be used to plot the results of protein set enrichment analysis (psea) for a set of proteins
+#' @description plotPSEA can be used to plot the results of protein set enrichment analysis (psea) for a set of proteins
 #' obtained from an experiment.
 
 #' @param x A data frame returned by \code{\link{runPSEA}} function.
