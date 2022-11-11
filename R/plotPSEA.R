@@ -29,6 +29,7 @@ plotPSEA = function(x, y = NULL, sig.level = 0.05, number.rep = NULL){
 
     # Add a new column to x, mymean as the average of NES
     # Arrange x based on mymean
+
     z <- z %>%
       rowwise() %>%
       mutate( mymean = mean(NES) ) %>%

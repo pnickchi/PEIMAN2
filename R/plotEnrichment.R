@@ -40,6 +40,7 @@ plotEnrichment = function(x, y = NULL, sig.level = 0.05, number.rep = NULL){
 
     # Undo scientific number presentation in x
     # formatC from base package
+
     x$`pvalue`           <- as.numeric( formatC(x$`pvalue`,           digits = 0, format = 'g') )
     x$`corrected pvalue` <- as.numeric( formatC(x$`corrected pvalue`, digits = 0, format = 'g') )
 
@@ -47,6 +48,7 @@ plotEnrichment = function(x, y = NULL, sig.level = 0.05, number.rep = NULL){
     # Filter based on corrected pvalue
     # Add a new column for relative frequency and log of corrected pvalues.
     # Select necessary columns for output
+
     data.for.plot <- x %>%
                      filter(`corrected pvalue` < sig.level) %>%
                      mutate(relFreq = round(`FreqinList`/Sample, digits = 3),

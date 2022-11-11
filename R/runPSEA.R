@@ -68,6 +68,7 @@ runPSEA = function(protein, os.name, pexponent = 1, nperm = 1000, p.adj.method =
 
 
 
+
   ##############################################################################
   # Step2. Call peiman function to run ordinary enrichment analysis and get pathways
   ##############################################################################
