@@ -24,7 +24,7 @@ Plot.
 \description{
 This function can be used to plot results of singular enrichment analysis for one set of protein.
 It can also be used to integrate and match the results of two separate singular enrichment analysis and
-plot the common PTMs. For more details pelase see examples.
+plot the common PTMs. For more details please see examples.
 }
 \examples{
 ## Enrichment analysis for the first protein list

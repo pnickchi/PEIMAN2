@@ -53,7 +53,7 @@ Every row corresponds to a post-translational modification (PTM) pathway.
 }
 }
 \description{
-Run Protein Set Enrichment Analysis (PSEA)
+This is the main function to run protein set enrichment analysis for a list of proteins and their score.
 }
 \examples{
 psea_res <- runPSEA(protein = exmplData2, os.name = 'Rattus norvegicus (Rat)', nperm = 100)

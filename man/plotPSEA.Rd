@@ -22,7 +22,7 @@ by number.rep parameter. The default value is NULL.}
 Plot
 }
 \description{
-#' plotPSEA can be used to plot the results of protein set enrichment analysis (psea) for a set of proteins
+plotPSEA can be used to plot the results of protein set enrichment analysis (psea) for a set of proteins
 obtained from an experiment.
 }
 \examples{
