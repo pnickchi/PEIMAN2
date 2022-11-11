@@ -53,7 +53,8 @@ runEnrichment = function(protein, os.name, p.adj.method = 'BH'){
   temp <- peiman_database %>% filter(OS == os.name)
   if( nrow( temp %>% filter( AC %in% protein ) ) == 0 ){
      msg <- 'None of the proteins seem to belong to this OS. Please check OS name again.'
-     msg <- paste0(msg, 'You can get a list of OS names and protein information at https://www.uniprot.org/docs/speclist')
+     msg <- paste0(msg, ' You can call getTaxonomyName function in PEIMAN2 package to get the exact name of OS.' )
+     msg <- paste0(msg, ' You can also get a list of OS names information at https://www.uniprot.org/docs/speclist')
      stop(msg)
   }
   rm(temp)
