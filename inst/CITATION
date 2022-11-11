@@ -1,0 +1,13 @@
+citHeader("To cite PEIMAN2 in publications use:")
+
+bibentry(
+  bibtype = "Article",
+  title = "Monitoring Functional Post-Translational Modifications Using a Data-Driven Proteome Informatic Pipeline Based on PEIMAN2",
+  author = "Payman Nickchi, Mehdi Mirzaie, Marc Baumann, Amirata Saei Dibavar, Mohieddin Jafari",
+  year = 2022,
+  journal = "biorXiv",
+  volume = 4,
+  number = 43,
+  pages = 1686,
+  doi = "https://www.biorxiv.org/content/10.1101/2022.11.09.515610v1",
+)
