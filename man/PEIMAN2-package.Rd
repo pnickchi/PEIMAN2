@@ -4,9 +4,9 @@
 \name{PEIMAN2-package}
 \alias{PEIMAN2}
 \alias{PEIMAN2-package}
-\title{PEIMAN2: Post-Translations, Enrichment, Integration, and Matching ANalysis}
+\title{PEIMAN2: Post-Translational Modification Enrichment, Integration, and Matching Analysis}
 \description{
-Functions and mined database from UniProt for single enrichment analysis (SEA) and protein set enrichment analysis (PSEA) of a list of protein.
+Functions and mined database from UniProt focusing on post-translational modifications to do single enrichment analysis (SEA) and protein set enrichment analysis (PSEA).
 }
 \author{
 \strong{Maintainer}: Payman Nickchi \email{pnickchi@sfu.ca}
