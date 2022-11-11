@@ -9,5 +9,5 @@ bibentry(
   volume = 4,
   number = 43,
   pages = 1686,
-  doi = "https://www.biorxiv.org/content/10.1101/2022.11.09.515610v1",
+  url = "https://www.biorxiv.org/content/10.1101/2022.11.09.515610v1",
 )

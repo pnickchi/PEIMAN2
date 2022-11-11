@@ -4,7 +4,7 @@
 \name{PEIMAN2-package}
 \alias{PEIMAN2}
 \alias{PEIMAN2-package}
-\title{PEIMAN2: Post-translations, Enrichment, Integration, and Matching ANalysis}
+\title{PEIMAN2: Post-Translations, Enrichment, Integration, and Matching ANalysis}
 \description{
 Functions and mined database from UniProt for single enrichment analysis (SEA) and protein set enrichment analysis (PSEA) of a list of protein.
 }

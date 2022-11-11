@@ -8,7 +8,7 @@
 A data frame with 686 rows and 5 variables
 }
 \source{
-\url{https://www.uniprot.org/docs/ptmlist.txt}
+\url{https://ftp.uniprot.org/pub/databases/uniprot/knowledgebase/complete/docs/ptmlist.txt}
 }
 \usage{
 data(ptmlist)
