@@ -9,7 +9,7 @@
 #' @import stringr
 #'
 #' @examples
-#' psea_res <- runPSEA(protein = exmplData2, os.name = 'Rattus norvegicus (Rat)', nperm = 100)
+#' psea_res <- runPSEA(protein = exmplData2, os.name = 'Rattus norvegicus (Rat)', nperm = 10)
 #' MS <- psea2mass(x = psea_res, sig.level = 0.05)
 psea2mass = function(x, sig.level = 0.05, number.rep = NULL){
 

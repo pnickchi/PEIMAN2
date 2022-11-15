@@ -18,7 +18,7 @@
 #' @importFrom forcats fct_reorder
 #'
 #' @examples
-#' psea_res <- runPSEA(protein = exmplData2, os.name = 'Rattus norvegicus (Rat)', nperm = 100)
+#' psea_res <- runPSEA(protein = exmplData2, os.name = 'Rattus norvegicus (Rat)', nperm = 10)
 #' plotPSEA(psea_res, sig.level = 0.05)
 #'
 plotPSEA = function(x, y = NULL, sig.level = 0.05, number.rep = NULL){

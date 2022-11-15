@@ -26,7 +26,7 @@ plotPSEA can be used to plot the results of protein set enrichment analysis (pse
 obtained from an experiment.
 }
 \examples{
-psea_res <- runPSEA(protein = exmplData2, os.name = 'Rattus norvegicus (Rat)', nperm = 100)
+psea_res <- runPSEA(protein = exmplData2, os.name = 'Rattus norvegicus (Rat)', nperm = 10)
 plotPSEA(psea_res, sig.level = 0.05)
 
 }
