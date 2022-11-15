@@ -9,6 +9,9 @@
 #' @import stringr
 #'
 #' @examples
+#' # We recommend at least nperm = 1000.
+#' # The number of permutations was reduced to 10
+#' # to accommodate CRAN policy on examples (run time <= 5 seconds).
 #' psea_res <- runPSEA(protein = exmplData2, os.name = 'Rattus norvegicus (Rat)', nperm = 10)
 #' MS <- psea2mass(x = psea_res, sig.level = 0.05)
 psea2mass = function(x, sig.level = 0.05, number.rep = NULL){

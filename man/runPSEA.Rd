@@ -56,5 +56,8 @@ Every row corresponds to a post-translational modification (PTM) pathway.
 This is the main function to run protein set enrichment analysis for a list of proteins and their score.
 }
 \examples{
+# We recommend at least nperm = 1000.
+# The number of permutations was reduced to 10
+# to accommodate CRAN policy on examples (run time <= 5 seconds).
 psea_res <- runPSEA(protein = exmplData2, os.name = 'Rattus norvegicus (Rat)', nperm = 10)
 }

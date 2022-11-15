@@ -20,6 +20,9 @@
 #' @importFrom graphics abline rug par
 #'
 #' @examples
+#' # We recommend at least nperm = 1000.
+#' # The number of permutations was reduced to 10
+#' # to accommodate CRAN policy on examples (run time <= 5 seconds).
 #' psea_res <- runPSEA(protein = exmplData2, os.name = 'Rattus norvegicus (Rat)', nperm = 10)
 #' plotRunningScore(x = psea_res)
 plotRunningScore = function(x, nplot = length(x$psea.result), type = 'l', lty = 1, lwd = 3, cex = 1.2, cex.axis = 1.2, cex.lab = 1.1, col = 'blue'){

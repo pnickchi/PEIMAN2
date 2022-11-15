@@ -33,6 +33,9 @@
 #' @importFrom stats p.adjust.methods
 #'
 #' @examples
+#' # We recommend at least nperm = 1000.
+#' # The number of permutations was reduced to 10
+#' # to accommodate CRAN policy on examples (run time <= 5 seconds).
 #' psea_res <- runPSEA(protein = exmplData2, os.name = 'Rattus norvegicus (Rat)', nperm = 10)
 runPSEA = function(protein, os.name, pexponent = 1, nperm = 1000, p.adj.method = 'fdr', sig.level = 0.05, minSize = 1){
 
