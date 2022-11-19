@@ -68,9 +68,8 @@ runEnrichment = function(protein, os.name, p.adj.method = 'BH'){
 
   # Let user know if some of the proteins were not in the current version of database.
   if(flag){
-    print('The following proteins are not in the current version of database:')
-    print( as.character(res[[2]]) )
-    print('Therefore they were excluded from final analysis.')
+    message('We did not find the following proteins in the current version of database: (Therefore they were excluded from final analysis.)')
+    message( as.character(res[[2]]) )
   }
 
   return(res[[1]])

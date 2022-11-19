@@ -27,6 +27,12 @@
 #' plotRunningScore(x = psea_res)
 plotRunningScore = function(x, nplot = length(x$psea.result), type = 'l', lty = 1, lwd = 3, cex = 1.2, cex.axis = 1.2, cex.lab = 1.1, col = 'blue'){
 
+
+  # Make sure the package does not change default valus of par() function for user.
+  oldpar <- par(no.readonly = TRUE)
+  on.exit(par(oldpar))
+  ################################################################################
+
   y <- x$psea.result
   par(mfrow = c(2,2))
 
