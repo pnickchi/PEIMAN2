@@ -9,9 +9,9 @@ README
 [![CRAN
 status](https://www.r-pkg.org/badges/version/PEIMAN2)](https://cran.r-project.org/package=PEIMAN2)
 [![GitHub
-Release](https://img.shields.io/github/release/jafarilab/PEIMAN2?style=flat)](https://github.com/jafarilab/PEIMAN2/releases)
+Release](https://img.shields.io/github/release/pnickchi/PEIMAN2?style=flat)](https://github.com/pnickchi/PEIMAN2/releases)
 [![Github All
-Releases](https://img.shields.io/github/downloads/jafarilab/PEIMAN2/total.svg?style=flat)](https://github.com/jafarilab/PEIMAN2)
+Releases](https://img.shields.io/github/downloads/pnickchi/PEIMAN2/total.svg?style=flat)](https://github.com/pnickchi/PEIMAN2)
 
 <!-- badges: end -->
 
