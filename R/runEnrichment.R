@@ -39,6 +39,12 @@ runEnrichment = function(protein, os.name, p.adj.method = 'BH'){
 
   stopifnot( p.adj.method %in% c('holm', 'hochberg', 'hommel', 'bonferroni', 'BH', 'BY', 'fdr', 'none') )
 
+
+  if( !is.vector(protein) | !is.character(protein) ){
+    stop('protein muse be a character vector.')
+  }
+
+
   if( sum(protein %in% peiman_database$AC) == 0 ){
     stop('None of the proteins are in the current version of PEIMAN databse.')
   }
