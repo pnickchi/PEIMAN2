@@ -17,17 +17,18 @@
 #' 1: A dataframe with protein set enrichment analysis (PSEA) results.
 #' Every row corresponds to a post-translational modification (PTM) pathway.
 #' - PTM: PTM keyword
-#' - pval: p-value for singular enrichment analysis
-#' - pvaladj: adjusted p-value
-#' - FreqinUniProt: The frequency of PTM in UniProt
-#' - FreqinList: The frequency of PTM in the given list
-#' - ES: enrichment score
-#' - NES: enrichmnt score normalized to mean enrichment of random samples of the same size
-#' - nMoreExtreme: number of times the permuted sample resulted in a profile with a larger ES value than abs(ES)
-#' - size: Number of proteins with the PTM
-#' - Enrichment: Whether the proteins in the pathway have been enriched in the list.
-#' - AC: Uniprot accession code (AC) of proteins with each PTM.
-#' - leadingEdge:
+#' - pval: p-value obtained from singular enrichment analysis (SEA).
+#' - pvaladj: adjusted p-value. This column is the adjusted pvalues with p.adj.method methods calculated in SEA method.
+#' - FreqinUniProt: The frequency of PTM in UniProt.
+#' - FreqinList: The frequency of PTM in the given list.
+#' - ES: enrichment score.
+#' - NES: enrichmnt score normalized to mean enrichment of random samples of the same size.
+#' - nMoreExtreme: number of times the permuted sample resulted in a profile with a larger ES value than abs(ES) of the sample.
+#' - size: Number of proteins in the list having this specific PTM.
+#' - Enrichment: Indicates if the proteins with the specific protein have been enriched in the list or not. NES positive is considered as enriched.
+#' - AC: Uniprot accession code (AC) of proteins with the specific PTM.
+#' - leadingEdge: the leading edge proteins are the proteins that show up in the ranked list at or before the point where the enrichment score (ES)
+#'   reaches its maximum deviation from zero.
 #' @export
 #'
 #' @importFrom stats p.adjust.methods

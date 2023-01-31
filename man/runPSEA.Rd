@@ -39,17 +39,18 @@ Returns a list of 6:
 Every row corresponds to a post-translational modification (PTM) pathway.
 \itemize{
 \item PTM: PTM keyword
-\item pval: p-value for singular enrichment analysis
-\item pvaladj: adjusted p-value
-\item FreqinUniProt: The frequency of PTM in UniProt
-\item FreqinList: The frequency of PTM in the given list
-\item ES: enrichment score
-\item NES: enrichmnt score normalized to mean enrichment of random samples of the same size
-\item nMoreExtreme: number of times the permuted sample resulted in a profile with a larger ES value than abs(ES)
-\item size: Number of proteins with the PTM
-\item Enrichment: Whether the proteins in the pathway have been enriched in the list.
-\item AC: Uniprot accession code (AC) of proteins with each PTM.
-\item leadingEdge:
+\item pval: p-value obtained from singular enrichment analysis (SEA).
+\item pvaladj: adjusted p-value. This column is the adjusted pvalues with p.adj.method methods calculated in SEA method.
+\item FreqinUniProt: The frequency of PTM in UniProt.
+\item FreqinList: The frequency of PTM in the given list.
+\item ES: enrichment score.
+\item NES: enrichmnt score normalized to mean enrichment of random samples of the same size.
+\item nMoreExtreme: number of times the permuted sample resulted in a profile with a larger ES value than abs(ES) of the sample.
+\item size: Number of proteins in the list having this specific PTM.
+\item Enrichment: Indicates if the proteins with the specific protein have been enriched in the list or not. NES positive is considered as enriched.
+\item AC: Uniprot accession code (AC) of proteins with the specific PTM.
+\item leadingEdge: the leading edge proteins are the proteins that show up in the ranked list at or before the point where the enrichment score (ES)
+reaches its maximum deviation from zero.
 }
 }
 \description{

@@ -50,7 +50,7 @@ plotPSEA = function(x, y = NULL, sig.level = 0.05, number.rep = NULL){
 
     # Generate ggplot
     p <- ggplot(data = z, aes(x = PTM, y = NES))
-    p <- p + geom_segment( aes(x = PTM, y = NES, xend = PTM, yend = 0), color = 'grey40', size = 1 )
+    p <- p + geom_segment( aes(x = PTM, y = NES, xend = PTM, yend = 0), color = 'grey40', linewidth = 1 )
     p <- p + geom_point( aes(fill = Enrichment, size = `size`), shape = 21 )
     #p <- p + geom_repel_label(data = y %>% filter(nMoreExtreme/x$nperm < sig.level), aes(label=nMoreExtreme/x$nperm),label.padding = unit(0.05, 'lines'))
     p <- p + geom_label(data = z %>% filter( ppvalue < sig.level), aes(label=ppvalue),label.padding = unit(0.05, 'lines'))
