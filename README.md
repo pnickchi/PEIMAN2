@@ -36,6 +36,8 @@ And the development version from [GitHub](https://github.com/) with:
 ``` r
 # install.packages("devtools")
 devtools::install_github("jafarilab/PEIMAN2")
+# or
+devtools::install_github("pnickchi/PEIMAN2")
 ```
 
 ## Example
