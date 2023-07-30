@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
 <!-- badges: end -->
 
 
-The PEIMAN2 package \[@PEIMAN2\] provides functions and mined database from UniProt for single enrichment analysis (SEA) and protein set enrichment analysis (PSEA) in a list of protein. The database is updated regularly with monthly changes in UniProt/SwissProt repository. To ensure you have the latest version of database, make sure to install the package from GitHub. 
+The PEIMAN2 package @PEIMAN2 provides functions and mined database from UniProt for single enrichment analysis (SEA) and protein set enrichment analysis (PSEA) in a list of protein. The database is updated regularly with monthly changes in UniProt/SwissProt repository. To ensure you have the latest version of database, make sure to install the package from GitHub. 
 
 
 ## Installation
@@ -36,6 +36,8 @@ And the development version from [GitHub](https://github.com/) with:
 ```{r, eval=FALSE}
 # install.packages("devtools")
 devtools::install_github("jafarilab/PEIMAN2")
+# or
+devtools::install_github("pnickchi/PEIMAN2")
 ```
 
 
