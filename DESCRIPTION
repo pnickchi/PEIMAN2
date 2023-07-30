@@ -11,7 +11,7 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 VignetteBuilder: knitr
-Depends: R (>= 2.10), tidyverse
+Depends: R (>= 2.10) 
 Imports: 
     ggplot2,
     dplyr,
@@ -23,7 +23,8 @@ Imports:
     graphics,
     forcats,
     stats,
-    magrittr
+    magrittr,
+    tidyverse
 Suggests: knitr, rmarkdown, testthat (>= 3.0.0)
 LazyData: true
 NeedsCompilation: no
