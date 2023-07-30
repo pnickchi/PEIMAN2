@@ -32,7 +32,7 @@
 #'
 #' ## Integrate and match the results of two separate singular enrichment analysis
 #' plotEnrichment(x = enrich1, y = enrich2)
-#' plotEnrichment(x = enrich1, y = enrich2, number.rep = 100)
+#' plotEnrichment(x = enrich1, y = enrich2, number.rep = 5)
 plotEnrichment = function(x, y = NULL, sig.level = 0.05, number.rep = NULL){
 
   # Plot one enriched list

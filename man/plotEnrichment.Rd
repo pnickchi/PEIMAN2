@@ -39,5 +39,5 @@ plotEnrichment(x = enrich2)
 
 ## Integrate and match the results of two separate singular enrichment analysis
 plotEnrichment(x = enrich1, y = enrich2)
-plotEnrichment(x = enrich1, y = enrich2, number.rep = 100)
+plotEnrichment(x = enrich1, y = enrich2, number.rep = 5)
 }
