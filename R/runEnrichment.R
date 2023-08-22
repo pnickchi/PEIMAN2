@@ -6,6 +6,9 @@
 #' @param protein A character vector with protein UniProt accession codes.
 #' @param os.name A character vector of length one with exact taxonomy name of species. If you do not know the
 #' the exact taxonomy name of species you are working with, please read \code{\link{getTaxonomyName}}.
+#' @param blist The background list will be substituted with the complete set of UniProt reviewed proteins to
+#' facilitate the analysis with a background list. The default value is NULL. Alternatively, if a vector of UniProt
+#' Accession Codes is provided, it will serve as the background list for the enrichment analysis.
 #' @param p.adj.method The adjustment method to correct for multiple testing. The default value is 'BH'.
 #' Run/see \code{\link[stats]{p.adjust.methods}} to get a list of possible methods.
 #'
@@ -23,7 +26,7 @@
 #'
 #' @examples
 #' enrich1 <- runEnrichment(protein = exmplData1$pl1, os.name = 'Homo sapiens (Human)')
-runEnrichment = function(protein, os.name, p.adj.method = 'BH'){
+runEnrichment = function(protein, os.name, blist = NULL, p.adj.method = 'BH'){
 
   #####################################
   # Step 1: Check the input arguments #
@@ -33,7 +36,7 @@ runEnrichment = function(protein, os.name, p.adj.method = 'BH'){
   #
   # stopifnot( is.vector(protein) )
 
-  flag = FALSE
+  flag_duplicate = FALSE
 
   stopifnot( class(p.adj.method)== 'character' )
 
@@ -50,9 +53,16 @@ runEnrichment = function(protein, os.name, p.adj.method = 'BH'){
   }
 
 
+  if( !is.null(blist) ){
+     if( !is.vector(blist) | !is.character(blist) ){
+       stop('blist must be a character vector.')
+     }
+  }
+
+
   # Check and remove if there is any duplicated proteins
   if ( any( duplicated(protein) ) ){
-    flag = TRUE
+    flag_duplicate = TRUE
   }
 
 
@@ -69,11 +79,16 @@ runEnrichment = function(protein, os.name, p.adj.method = 'BH'){
   ##############################################################################
   # Step2. Call peiman function to run singular enrichment analysis (SEA)
   ##############################################################################
-  res <- peiman(pro = protein, os = os.name, am = p.adj.method)
+
+  if( is.null(blist) ){
+    res <- peiman(pro = protein, os = os.name, background = NULL, am = p.adj.method)
+  }else{
+    res <- peiman(pro = protein, os = os.name, background = blist, am = p.adj.method)
+  }
 
 
   # Let user know if some of the proteins were not in the current version of database.
-  if(flag){
+  if(flag_duplicate){
     message('We did not find the following proteins in the current version of database: (Therefore they were excluded from final analysis.)')
     message( as.character(res[[2]]) )
   }

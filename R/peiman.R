@@ -2,7 +2,7 @@
 #' @importFrom stats phyper
 #' @importFrom stats p.adjust
 #' @importFrom dplyr arrange
-peiman <- function(pro, os, am){
+peiman <- function(pro, os, background = NULL, am){
 
   #
   # pro: A character vector of proteins
@@ -22,9 +22,13 @@ peiman <- function(pro, os, am){
 
 
   #
-  # Filter peiman database to include proteins
+  # Filter peiman database to include os specific proteins
   #
   tempDatabase <- peiman_database %>% filter(OS == os)
+
+  if( !is.null(background) ){
+    tempDatabase <-  tempDatabase %>% filter(AC %in% background)
+  }
 
   # Identify which proteins are available in the current version of peiman database
   # Define list of proteins that are not available in the database

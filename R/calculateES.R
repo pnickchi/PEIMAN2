@@ -11,7 +11,7 @@ calculateES = function(x){
   # Get the ES value
   ES       <- prof[mx.indx]
 
-  # Return resultss
+  # Return results
   res <- list(pos = mx.indx, ES = ES)
   return(res)
 
