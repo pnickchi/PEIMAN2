@@ -28,7 +28,14 @@ peiman <- function(pro, os, background = NULL, am){
 
   if( !is.null(background) ){
     tempDatabase <-  tempDatabase %>% filter(AC %in% background)
+
+    if( nrow(tempDatabase) == 0 ){
+      stop('After looking into the background list, no protein found. Did you pass the os.name correctly?')
+    }
+
   }
+
+
 
   # Identify which proteins are available in the current version of peiman database
   # Define list of proteins that are not available in the database

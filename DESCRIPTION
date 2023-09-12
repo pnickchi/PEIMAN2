@@ -23,8 +23,7 @@ Imports:
     graphics,
     forcats,
     stats,
-    magrittr,
-    tidyverse
+    magrittr
 Suggests: knitr, rmarkdown, testthat (>= 3.0.0)
 LazyData: true
 NeedsCompilation: no

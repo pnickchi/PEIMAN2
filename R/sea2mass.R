@@ -14,8 +14,6 @@
 #'
 #' @export
 #'
-#' @import tidyverse
-#'
 #' @examples
 #' enrich1 <- runEnrichment(protein = exmplData1$pl1, os.name = 'Homo sapiens (Human)')
 #' MS      <- sea2mass(x = enrich1, sig.level = 0.05)

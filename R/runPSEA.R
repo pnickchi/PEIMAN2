@@ -5,6 +5,9 @@
 #' @param protein A dataframe with two columns. Frist column should be protein accession code, second column is the score.
 #' @param os.name A character vector of length one with exact taxonomy name of species. If you do not know the
 #' the exact taxonomy name of species you are working with, please read \code{\link{getTaxonomyName}}.
+#' @param blist The background list will be substituted with the complete set of UniProt reviewed proteins to
+#' facilitate the analysis with a background list. The default value is NULL. Alternatively, if a vector of UniProt
+#' Accession Codes is provided, it will serve as the background list for the enrichment analysis.
 #' @param pexponent Enrichment weighting exponent, p. For values of p < 1, one can detect incoherent patterns
 #' in a set of protein. If one expects a small number of proteins to be coherent in a large set, then p > 1 is
 #' a good choice.
@@ -38,7 +41,7 @@
 #' # The number of permutations was reduced to 10
 #' # to accommodate CRAN policy on examples (run time <= 5 seconds).
 #' psea_res <- runPSEA(protein = exmplData2, os.name = 'Rattus norvegicus (Rat)', nperm = 10)
-runPSEA = function(protein, os.name, pexponent = 1, nperm = 1000, p.adj.method = 'fdr', sig.level = 0.05, minSize = 1){
+runPSEA = function(protein, os.name, blist = NULL, pexponent = 1, nperm = 1000, p.adj.method = 'fdr', sig.level = 0.05, minSize = 1){
 
 
   ########################################################
@@ -85,7 +88,12 @@ runPSEA = function(protein, os.name, pexponent = 1, nperm = 1000, p.adj.method =
 
 
   # Run ordinary enrichment
-  enrich <- peiman(pro = protein[,1], os = os.name, am = p.adj.method)
+  if( is.null(blist) ){
+    enrich <- peiman(pro = protein[,1], os = os.name, background = NULL, am = p.adj.method)
+  }else{
+    enrich <- peiman(pro = protein[,1], os = os.name, background = blist, am = p.adj.method)
+  }
+
 
   # Filter enrich result based on corrected p-values less than sig.level. Also filter on minSize
   enrich <- enrich[[1]] %>%

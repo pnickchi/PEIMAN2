@@ -7,6 +7,7 @@
 runPSEA(
   protein,
   os.name,
+  blist = NULL,
   pexponent = 1,
   nperm = 1000,
   p.adj.method = "fdr",
@@ -19,6 +20,10 @@ runPSEA(
 
 \item{os.name}{A character vector of length one with exact taxonomy name of species. If you do not know the
 the exact taxonomy name of species you are working with, please read \code{\link{getTaxonomyName}}.}
+
+\item{blist}{The background list will be substituted with the complete set of UniProt reviewed proteins to
+facilitate the analysis with a background list. The default value is NULL. Alternatively, if a vector of UniProt
+Accession Codes is provided, it will serve as the background list for the enrichment analysis.}
 
 \item{pexponent}{Enrichment weighting exponent, p. For values of p < 1, one can detect incoherent patterns
 in a set of protein. If one expects a small number of proteins to be coherent in a large set, then p > 1 is

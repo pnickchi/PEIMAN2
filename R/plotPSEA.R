@@ -14,7 +14,6 @@
 #'
 #' @export
 #'
-#' @import tidyverse
 #' @importFrom forcats fct_reorder
 #'
 #' @examples
