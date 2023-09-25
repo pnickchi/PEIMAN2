@@ -11,6 +11,8 @@
 #' corrected p-value). Note that `sig.level` applies to both x and y simultaneously.
 #' @param number.rep Only plot PTM terms that occurred more than a specific number of times in UniProt database.
 #' This number is set by number.rep parameter. The default value is NULL.
+#' @param plotit a logical indicating whether you want to draw the plot (TRUE, default value) or you want to return
+#' the plot (FALSE).
 #'
 #' @return Plot.
 #'
@@ -33,7 +35,7 @@
 #' ## Integrate and match the results of two separate singular enrichment analysis
 #' plotEnrichment(x = enrich1, y = enrich2)
 #' plotEnrichment(x = enrich1, y = enrich2, number.rep = 5)
-plotEnrichment = function(x, y = NULL, sig.level = 0.05, number.rep = NULL){
+plotEnrichment = function(x, y = NULL, sig.level = 0.05, number.rep = NULL, plotit = TRUE){
 
   # Plot one enriched list
   if( is.null(y) ){
@@ -80,8 +82,12 @@ plotEnrichment = function(x, y = NULL, sig.level = 0.05, number.rep = NULL){
                 ylab('Relative frequency') +
                 coord_flip()
 
+    if( plotit ){
+      plot(g1)
+    }else{
+      return(g1)
+    }
 
-    plot(g1)
 
   }
 
