@@ -22,8 +22,8 @@
 #' - PTM: PTM keyword
 #' - pval: p-value obtained from singular enrichment analysis (SEA).
 #' - pvaladj: adjusted p-value. This column is the adjusted pvalues with p.adj.method methods calculated in SEA method.
-#' - FreqinUniProt: The frequency of PTM in UniProt.
-#' - FreqinList: The frequency of PTM in the given list.
+#' - FreqinPopulation: The frequency of PTM in UniProt.
+#' - FreqinSample: The frequency of PTM in the given list.
 #' - ES: enrichment score.
 #' - NES: enrichmnt score normalized to mean enrichment of random samples of the same size.
 #' - nMoreExtreme: number of times the permuted sample resulted in a profile with a larger ES value than abs(ES) of the sample.
@@ -98,7 +98,7 @@ runPSEA = function(protein, os.name, blist = NULL, pexponent = 1, nperm = 1000, 
   # Filter enrich result based on corrected p-values less than sig.level. Also filter on minSize
   enrich <- enrich[[1]] %>%
             filter(`corrected pvalue` < sig.level) %>%
-            filter(`FreqinList` >= minSize)
+            filter(`FreqinSample` >= minSize)
 
 
   # Check if any pathway exists after filtering
@@ -183,8 +183,8 @@ runPSEA = function(protein, os.name, blist = NULL, pexponent = 1, nperm = 1000, 
   res <- data.frame(PTM = enrich[,'PTM'],
                     pval = enrich$pvalue,
                     pvaladj = enrich$`corrected pvalue`,
-                    FreqinUniProt = enrich$`FreqinUniprot`,
-                    FreqinList    = enrich$`FreqinList`,
+                    FreqinPopulation = enrich$`FreqinPopulation`,
+                    FreqinSample    = enrich$`FreqinSample`,
                     ES = unlist(ES),
                     NES = NES,
                     nMoreExtreme = nMoreExtreme,

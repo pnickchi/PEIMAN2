@@ -85,10 +85,10 @@ enrich1 <- runEnrichment(protein = pl1, os.name = 'Homo sapiens (Human)')
 The function returns a dataframe with the following columns:
 
 - `PTM`: Post-translational modification (PTM).
-- `Freq in Uniprot`: The total number of proteins with this PTM in UniProt.
-- `Freq in List`: The total number of proteins with this PTM in the list.
+- `Freq in Population`: The total number of proteins with this PTM in UniProt (or background list).
+- `Freq in Sample`: The total number of proteins with this PTM in the list.
 - `Sample`: Number of proteins in the given list.
-- `Population`: Total number of proteins in the current version of PEIMAN databse.
+- `Population`: Total number of proteins in the current version of PEIMAN database (or background list).
 - `pvalue`: The p-value obtained from hypergeometric test (enrichment analysis).
 - `corrected pvalue`: Adjusted p-value to correct for multiple testing.
 - `AC`: Uniprot accession code (AC) of proteins with each PTM.

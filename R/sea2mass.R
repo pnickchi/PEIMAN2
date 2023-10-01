@@ -22,10 +22,10 @@ sea2mass = function(x, sig.level = 0.05, number.rep = NULL){
   x <- x %>% filter(`corrected pvalue` <= sig.level)
 
   if( !is.null(number.rep) ){
-    x <- x %>% filter(`FreqinUniprot` >= number.rep)
+    x <- x %>% filter(`FreqinPopulation` >= number.rep)
   }
 
-  x <- x %>% arrange( desc(`FreqinList`) )
+  x <- x %>% arrange( desc(`FreqinSample`) )
 
   pathway <- as.character(x$PTM)
 

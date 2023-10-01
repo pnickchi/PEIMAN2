@@ -46,8 +46,8 @@ Every row corresponds to a post-translational modification (PTM) pathway.
 \item PTM: PTM keyword
 \item pval: p-value obtained from singular enrichment analysis (SEA).
 \item pvaladj: adjusted p-value. This column is the adjusted pvalues with p.adj.method methods calculated in SEA method.
-\item FreqinUniProt: The frequency of PTM in UniProt.
-\item FreqinList: The frequency of PTM in the given list.
+\item FreqinPopulation: The frequency of PTM in UniProt.
+\item FreqinSample: The frequency of PTM in the given list.
 \item ES: enrichment score.
 \item NES: enrichmnt score normalized to mean enrichment of random samples of the same size.
 \item nMoreExtreme: number of times the permuted sample resulted in a profile with a larger ES value than abs(ES) of the sample.

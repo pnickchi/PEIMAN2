@@ -36,8 +36,6 @@ runEnrichment = function(protein, os.name, blist = NULL, p.adj.method = 'BH'){
   #
   # stopifnot( is.vector(protein) )
 
-  flag_duplicate = FALSE
-
   stopifnot( class(p.adj.method)== 'character' )
 
   stopifnot( p.adj.method %in% c('holm', 'hochberg', 'hommel', 'bonferroni', 'BH', 'BY', 'fdr', 'none') )
@@ -60,20 +58,20 @@ runEnrichment = function(protein, os.name, blist = NULL, p.adj.method = 'BH'){
   }
 
 
-  # Check and remove if there is any duplicated proteins
-  if ( any( duplicated(protein) ) ){
-    flag_duplicate = TRUE
+  # Set the flag variable to TRUE if there is any duplicated protein in the list
+  flag_duplicate <- ifelse( any( duplicated(protein) ), TRUE, FALSE)
+
+  if( flag_duplicate ){
+    protein <- protein[!duplicated(protein)]
   }
 
-
-  temp <- peiman_database %>% filter(OS == os.name)
-  if( nrow( temp %>% filter( AC %in% protein ) ) == 0 ){
-     msg <- 'None of the proteins seem to belong to this OS. Please check OS name again.'
+  # Filter to proteins for os.name and check the result
+  if( nrow( peiman_database %>% filter(OS == os.name) %>% filter( AC %in% protein ) ) == 0 ){
+     msg <- 'None of the proteins found in the current version of database or the OS name is wrong?'
      msg <- paste0(msg, ' You can call getTaxonomyName function in PEIMAN2 package to get the exact name of OS.' )
      msg <- paste0(msg, ' You can also get a list of OS names information at https://www.uniprot.org/docs/speclist')
      stop(msg)
   }
-  rm(temp)
 
 
   ##############################################################################
@@ -87,10 +85,17 @@ runEnrichment = function(protein, os.name, blist = NULL, p.adj.method = 'BH'){
   }
 
 
+  # Check if there was any duplicate protein
+  if( flag_duplicate ){
+    message('Duplicate proteins found in the list and were automatically removed.')
+  }
+
+
   # Let user know if some of the proteins were not in the current version of database.
-  if(flag_duplicate){
-    message('We did not find the following proteins in the current version of database: (Therefore they were excluded from final analysis.)')
+  if( length(res[[2]]) ){
+    message('We did not find the following proteins in the current version of database:')
     message( as.character(res[[2]]) )
+    message('(Therefore they were excluded from final analysis.)')
   }
 
   return(res[[1]])

@@ -28,10 +28,10 @@ psea2mass = function(x, sig.level = 0.05, number.rep = NULL){
   temp    <- x[[1]] %>% filter( (nMoreExtreme / x[[6]]) <= sig.level )
 
   if( !is.null(number.rep) ){
-    temp <- temp %>% filter(FreqinList >= number.rep)
+    temp <- temp %>% filter(FreqinSample >= number.rep)
   }
 
-  pathway <- data.frame( PTM = as.character(temp$PTM), FreqinList = temp$FreqinList )
+  pathway <- data.frame( PTM = as.character(temp$PTM), FreqinSample = temp$FreqinSample )
 
   res <- list()
   for( i in 1:nrow(pathway) ){
@@ -46,15 +46,15 @@ psea2mass = function(x, sig.level = 0.05, number.rep = NULL){
 
 
   res <- do.call(rbind.data.frame, res)
-  colnames(res) <- c('ID', 'AC', 'KW', 'FT', 'MOD_ID', 'FreqinList')
-  res <- res %>% arrange(desc(FreqinList))
+  colnames(res) <- c('ID', 'AC', 'KW', 'FT', 'MOD_ID', 'FreqinSample')
+  res <- res %>% arrange(desc(FreqinSample))
 
   MOD_ID      <- res$MOD_ID
   pseaMS      <- mod_ont %>% filter(id %in% MOD_ID)
   pseaMS$def  <- str_replace(string = pseaMS$def, pattern = "A protein modification that effectively ", replacement = "")
   colnames(pseaMS)[1] <- 'MOD_ID'
 
-  pseaMS <- pseaMS %>% left_join(res, 'MOD_ID') %>% select(c('MOD_ID', 'name', 'def', 'FreqinList')) %>% arrange(desc(FreqinList))
+  pseaMS <- pseaMS %>% left_join(res, 'MOD_ID') %>% select(c('MOD_ID', 'name', 'def', 'FreqinSample')) %>% arrange(desc(FreqinSample))
 
   return(pseaMS)
 

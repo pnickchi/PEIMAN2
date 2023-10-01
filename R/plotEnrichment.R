@@ -53,23 +53,23 @@ plotEnrichment = function(x, y = NULL, sig.level = 0.05, number.rep = NULL, plot
 
     data.for.plot <- x %>%
                      filter(`corrected pvalue` < sig.level) %>%
-                     mutate(relFreq = round(`FreqinList`/Sample, digits = 3),
+                     mutate(relFreq = round(`FreqinSample`/Sample, digits = 3),
                             logCorrectPvalue = round(-log(`corrected pvalue`+1e-22), digits = 3) )
 
 
 
     if( !is.null(number.rep) ){
-      data.for.plot <- data.for.plot %>% filter(`FreqinUniprot` >= number.rep)
+      data.for.plot <- data.for.plot %>% filter(`FreqinPopulation` >= number.rep)
     }
 
-    data.for.plot <- data.for.plot %>% select(PTM, logCorrectPvalue, relFreq, `FreqinList`, Sample, Population)
+    data.for.plot <- data.for.plot %>% select(PTM, logCorrectPvalue, relFreq, `FreqinSample`, Sample, Population)
 
 
     #  Change the order of PTM levels according to relFreq
     data.for.plot$PTM <- fct_reorder(data.for.plot$PTM, data.for.plot$relFreq)
 
 
-    g1 <- ggplot(data = data.for.plot, aes(x = PTM, y = relFreq, fill = logCorrectPvalue, size = `FreqinList`)) +
+    g1 <- ggplot(data = data.for.plot, aes(x = PTM, y = relFreq, fill = logCorrectPvalue, size = `FreqinSample`)) +
           geom_segment( aes(x = PTM, y = 0, xend = PTM, yend = relFreq), size = 1, col = 'grey40' ) +
           geom_point(shape = 21) +
           theme(axis.text.x  = element_text(size = 12, face = 'bold'),
@@ -107,8 +107,8 @@ plotEnrichment = function(x, y = NULL, sig.level = 0.05, number.rep = NULL, plot
     y <- y %>% filter(`corrected pvalue` < sig.level)
 
     # Calculate relative frequency
-    x <- x %>% mutate(relFreq = round(`FreqinList`/Sample, digits = 4))
-    y <- y %>% mutate(relFreq = round(`FreqinList`/Sample, digits = 4))
+    x <- x %>% mutate(relFreq = round(`FreqinSample`/Sample, digits = 4))
+    y <- y %>% mutate(relFreq = round(`FreqinSample`/Sample, digits = 4))
 
     # Calculate log10 corrected pvalue
     x <- x %>% mutate(logCorrectPvalue = round(-log(`corrected pvalue`+1e-22), digits = 4))
@@ -119,8 +119,8 @@ plotEnrichment = function(x, y = NULL, sig.level = 0.05, number.rep = NULL, plot
     y <- y %>% mutate(PTM = as.character(PTM))
 
     if( !is.null(number.rep) ){
-      x <- x %>% filter(`FreqinUniprot` >= number.rep)
-      y <- y %>% filter(`FreqinUniprot` >= number.rep)
+      x <- x %>% filter(`FreqinPopulation` >= number.rep)
+      y <- y %>% filter(`FreqinPopulation` >= number.rep)
     }
 
     # Select required columns

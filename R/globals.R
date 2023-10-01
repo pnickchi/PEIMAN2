@@ -23,6 +23,8 @@ utils::globalVariables(
     'mymean',
     'FreqinUniProt',
     'corrected pvalue',
-    'mod_ont'
+    'mod_ont',
+    'FreqinSample',
+    'FreqinPopulation'
   )
 )
