@@ -35,6 +35,10 @@ psea2mass = function(x, sig.level = 0.05, number.rep = NULL){
     temp <- temp %>% filter(FreqinSample >= number.rep)
   }
 
+  if(nrow(temp) == 0){
+    stop('No PTMS passing number.rep threshold.')
+  }
+
   pathway <- data.frame( PTM = as.character(temp$PTM), FreqinSample = temp$FreqinSample )
 
   res <- list()
