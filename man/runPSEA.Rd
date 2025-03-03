@@ -16,32 +16,41 @@ runPSEA(
 )
 }
 \arguments{
-\item{protein}{A dataframe with two columns. Frist column should be protein accession code, second column is the score.}
+\item{protein}{A dataframe with two columns. Frist column should be protein
+accession code, second column is the score.}
 
-\item{os.name}{A character vector of length one with exact taxonomy name of species. If you do not know the
-the exact taxonomy name of species you are working with, please read \code{\link{getTaxonomyName}}.}
+\item{os.name}{A character vector of length one with exact taxonomy name of
+species. If you do not know the the exact taxonomy name of species you are
+working with, please read \code{\link{getTaxonomyName}}.}
 
-\item{blist}{The background list will be substituted with the complete set of UniProt reviewed proteins to
-facilitate the analysis with a background list. The default value is NULL. Alternatively, if a vector of UniProt
-Accession Codes is provided, it will serve as the background list for the enrichment analysis.}
+\item{blist}{The background list will be substituted with the complete set of
+UniProt reviewed proteins to facilitate the analysis with a background
+list. The default value is NULL. Alternatively, if a vector of UniProt
+Accession Codes is provided, it will serve as the background list for the
+enrichment analysis.}
 
-\item{pexponent}{Enrichment weighting exponent, p. For values of p < 1, one can detect incoherent patterns
-in a set of protein. If one expects a small number of proteins to be coherent in a large set, then p > 1 is
-a good choice.}
+\item{pexponent}{Enrichment weighting exponent, p. For values of p < 1, one
+can detect incoherent patterns in a set of protein. If one expects a small
+number of proteins to be coherent in a large set, then p > 1 is a good
+choice.}
 
-\item{nperm}{Number of permutation to estimate false discovery rate (FDR). Default value is 1000.}
+\item{nperm}{Number of permutation to estimate false discovery rate (FDR).
+Default value is 1000.}
 
-\item{p.adj.method}{The adjustment method to correct pvalues for multiple testing in enrichment.
-Run p.adjust.methods() to get a list of possible methods.}
+\item{p.adj.method}{The adjustment method to correct pvalues for multiple
+testing in enrichment. Run p.adjust.methods() to get a list of possible
+methods.}
 
-\item{sig.level}{The significance level to filter PTM (applies on adjusted p-value)}
+\item{sig.level}{The significance level to filter PTM (applies on adjusted
+p-value)}
 
-\item{minSize}{PTMs with the number of proteins below this threshold are excluded.}
+\item{minSize}{PTMs with the number of proteins below this threshold are
+excluded.}
 }
 \value{
-Returns a list of 6:
-1: A dataframe with protein set enrichment analysis (PSEA) results.
-Every row corresponds to a post-translational modification (PTM) pathway.
+Returns a list of 6: 1: A dataframe with protein set enrichment
+analysis (PSEA) results. Every row corresponds to a post-translational
+modification (PTM) keyword.
 \itemize{
 \item PTM: PTM keyword
 \item pval: p-value obtained from singular enrichment analysis (SEA).
@@ -59,7 +68,8 @@ reaches its maximum deviation from zero.
 }
 }
 \description{
-This is the main function to run protein set enrichment analysis for a list of proteins and their score.
+This is the main function to run protein set enrichment analysis
+for a list of proteins and their score.
 }
 \examples{
 # We recommend at least nperm = 1000.

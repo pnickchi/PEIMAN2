@@ -1,24 +1,34 @@
 #' Run Protein Set Enrichment Analysis (PSEA)
 #'
-#' @description This is the main function to run protein set enrichment analysis for a list of proteins and their score.
+#' @description This is the main function to run protein set enrichment analysis
+#'   for a list of proteins and their score.
 #'
-#' @param protein A dataframe with two columns. Frist column should be protein accession code, second column is the score.
-#' @param os.name A character vector of length one with exact taxonomy name of species. If you do not know the
-#' the exact taxonomy name of species you are working with, please read \code{\link{getTaxonomyName}}.
-#' @param blist The background list will be substituted with the complete set of UniProt reviewed proteins to
-#' facilitate the analysis with a background list. The default value is NULL. Alternatively, if a vector of UniProt
-#' Accession Codes is provided, it will serve as the background list for the enrichment analysis.
-#' @param pexponent Enrichment weighting exponent, p. For values of p < 1, one can detect incoherent patterns
-#' in a set of protein. If one expects a small number of proteins to be coherent in a large set, then p > 1 is
-#' a good choice.
-#' @param nperm Number of permutation to estimate false discovery rate (FDR). Default value is 1000.
-#' @param p.adj.method The adjustment method to correct pvalues for multiple testing in enrichment.
-#' Run p.adjust.methods() to get a list of possible methods.
-#' @param sig.level The significance level to filter PTM (applies on adjusted p-value)
-#' @param minSize PTMs with the number of proteins below this threshold are excluded.
-#' @return Returns a list of 6:
-#' 1: A dataframe with protein set enrichment analysis (PSEA) results.
-#' Every row corresponds to a post-translational modification (PTM) pathway.
+#' @param protein A dataframe with two columns. Frist column should be protein
+#'   accession code, second column is the score.
+#' @param os.name A character vector of length one with exact taxonomy name of
+#'   species. If you do not know the the exact taxonomy name of species you are
+#'   working with, please read \code{\link{getTaxonomyName}}.
+#' @param blist The background list will be substituted with the complete set of
+#'   UniProt reviewed proteins to facilitate the analysis with a background
+#'   list. The default value is NULL. Alternatively, if a vector of UniProt
+#'   Accession Codes is provided, it will serve as the background list for the
+#'   enrichment analysis.
+#' @param pexponent Enrichment weighting exponent, p. For values of p < 1, one
+#'   can detect incoherent patterns in a set of protein. If one expects a small
+#'   number of proteins to be coherent in a large set, then p > 1 is a good
+#'   choice.
+#' @param nperm Number of permutation to estimate false discovery rate (FDR).
+#'   Default value is 1000.
+#' @param p.adj.method The adjustment method to correct pvalues for multiple
+#'   testing in enrichment. Run p.adjust.methods() to get a list of possible
+#'   methods.
+#' @param sig.level The significance level to filter PTM (applies on adjusted
+#'   p-value)
+#' @param minSize PTMs with the number of proteins below this threshold are
+#'   excluded.
+#' @return Returns a list of 6: 1: A dataframe with protein set enrichment
+#'   analysis (PSEA) results. Every row corresponds to a post-translational
+#'   modification (PTM) keyword.
 #' - PTM: PTM keyword
 #' - pval: p-value obtained from singular enrichment analysis (SEA).
 #' - pvaladj: adjusted p-value. This column is the adjusted pvalues with p.adj.method methods calculated in SEA method.
@@ -130,7 +140,7 @@ runPSEA = function(protein, os.name, blist = NULL, pexponent = 1, nperm = 1000, 
   # Loop through all rows in enrich
   for( i in 1:total ){
 
-    # Get proteins in the i-th pathway
+    # Get proteins in the i-th PTM keyword
     pro.pathway <- unlist( str_split(enrich[i,'AC'] ,pattern = '; ') )
     size[i]     <- length(pro.pathway)
 

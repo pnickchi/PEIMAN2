@@ -9,15 +9,19 @@ runEnrichment(protein, os.name, blist = NULL, p.adj.method = "BH")
 \arguments{
 \item{protein}{A character vector with protein UniProt accession codes.}
 
-\item{os.name}{A character vector of length one with exact taxonomy name of species. If you do not know the
-the exact taxonomy name of species you are working with, please read \code{\link{getTaxonomyName}}.}
+\item{os.name}{A character vector of length one with exact taxonomy name of
+species. If you do not know the the exact taxonomy name of species you are
+working with, please read \code{\link{getTaxonomyName}}.}
 
-\item{blist}{The background list will be substituted with the complete set of UniProt reviewed proteins to
-facilitate the analysis with a background list. The default value is NULL. Alternatively, if a vector of UniProt
-Accession Codes is provided, it will serve as the background list for the enrichment analysis.}
+\item{blist}{The background list will be substituted with the complete set of
+UniProt reviewed proteins to facilitate the analysis with a background
+list. The default value is NULL. Alternatively, if a vector of UniProt
+Accession Codes is provided, it will serve as the background list for the
+enrichment analysis.}
 
-\item{p.adj.method}{The adjustment method to correct for multiple testing. The default value is 'BH'.
-Run/see \code{\link[stats]{p.adjust.methods}} to get a list of possible methods.}
+\item{p.adj.method}{The adjustment method to correct for multiple testing.
+The default value is 'BH'. Run/see \code{\link[stats]{p.adjust.methods}} to
+get a list of possible methods.}
 }
 \value{
 The result is a dataframe with the following columns:
@@ -33,8 +37,8 @@ The result is a dataframe with the following columns:
 }
 }
 \description{
-This function takes proteins with their UniProt accession code, runs singular
-enrichment (SEA) analysis, and returns enrichment results.
+This function takes proteins with their UniProt accession code,
+runs singular enrichment (SEA) analysis, and returns enrichment results.
 }
 \examples{
 enrich1 <- runEnrichment(protein = exmplData1$pl1, os.name = 'Homo sapiens (Human)')
