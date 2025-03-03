@@ -24,11 +24,11 @@ knitr::opts_chunk$set(
 
 ## 1 Introduction
 
-The annotation enrichment analysis increases the chance of identifying relevant biological pathways in a list of genes or proteins. The post translational enrichment, integration, and matching analysis (PEIMAN v1) software was introduced to provide a systematic framework to identify more probable and enriched post-translational modification (PTM) terms in a list of proteins obtained from high-throughput technologies [@nickchi2015]. PEIMAN maps a large list of proteins to PTM pathways and test for their statistical significance, using a hypergeometric test. PEIMAN uses the most traditional way of enrichment analysis, by getting a list of proteins selected by user, and search for enriched PTM terms one by one. This strategy is called Singular Enrichment Analysis or SEA. Although this is a very promising approach for identifying biological pathways, the quality of selected list by researcher can potentially affect results at the end of the analysis.   
+The annotation enrichment analysis increases the chance of identifying relevant biological features in a list of genes or proteins. The post translational enrichment, integration, and matching analysis (PEIMAN v1) software was introduced to provide a systematic framework to identify more probable and enriched post-translational modification (PTM) terms in a list of proteins obtained from high-throughput technologies [@nickchi2015]. PEIMAN maps a large list of proteins to PTM keywords and test for their statistical significance, using a hypergeometric test. PEIMAN uses the most traditional way of enrichment analysis, by getting a list of proteins selected by user, and search for enriched PTM terms one by one. This strategy is called Singular Enrichment Analysis or SEA. Although this is a very promising approach for identifying biological features, the quality of selected list by researcher can potentially affect results at the end of the analysis.   
 
 To avoid this problem, we extend our enrichment framework to a wider class of enrichment analysis called Gene Set Enrichment Analysis or GSEA [@Subramanian2005]. The underlying idea of GSEA is very similar to SEA. Instead of applying a cutoff on input genes obtained from micro array experiments (either p-value or fold-change in gene expression), a 'no-cutoff' strategy is considered. The immediate benefits of this approach is to reduce the bias of gene selection and include genes with a low change in their expression level to participate in final analysis. The maximum value of the running score profile for ranked genes in each enrichment category is then calculated and compared with random scores obtained from permutation. More details on [@Subramanian2005]. This framework can be expanded to enrichment analysis in proteins. Inspired by GSEA idea, we here introduce a package in R for Protein Set Enrichment Analysis (PSEA).  
 
-The database in PEIMAN package updates monthly according to changes in UniProt. The package can be used to perform singular enrichment analysis (SEA) and visualize the results. PEIMAN can also be used to match and integrate results of two SEA analysis (for the same species) by visualizing their common pathways. To correct for biases in SEA, we implement protein set enrichment analysis (PSEA) as a new tool for computational community. Researchers can use this package to run PSEA and visualize the results.
+The database in PEIMAN package updates monthly according to changes in UniProt. The package can be used to perform singular enrichment analysis (SEA) and visualize the results. PEIMAN can also be used to match and integrate results of two SEA analysis (for the same species) by visualizing their common PTM terms. To correct for biases in SEA, we implement protein set enrichment analysis (PSEA) as a new tool for computational community. Researchers can use this package to run PSEA and visualize the results.
 
 
 ![Figure1: Our suggested workflow for a PTM-centric proteomics using PEIMAN software v2.0](vignettes_fig1.jpg){width=75%}
@@ -151,26 +151,26 @@ In order to run protein set enrichment analysis (PSEA), you can use `runPSEA` fu
 - `protein`: A character vector with protein UniProt accession.
 - `os.name`: A character of length one for the exact name of organism name. 
 - `pexponent`: Enrichment weighting exponent, p. The default value is 1. For values of p < 1, one can detect incoherent patterns in a set of protein. If one expects a small number of proteins to be coherent in a large set, then p > 1 is a good choice.
-- `nperm`: Number of permutation to adjust for multiple testing in different pathways. Default is 1000.
+- `nperm`: Number of permutation to adjust for multiple testing in different PTM terms. Default is 1000.
 - `p.adj.method`: The adjustment method to correct for multiple testing. Run `p.adjust.methods` to get a list
 of possible methods.
-- `sig.level`: The significance level to filter pathways (applies to adjusted p-value), 0.05 is the default value.
-- `minSize`: PTM pathways with a lower number of proteins than minSize are excluded. The default value is one.
+- `sig.level`: The significance level to filter PTM terms (applies to adjusted p-value), 0.05 is the default value.
+- `minSize`: PTM terms with a lower number of proteins than minSize are excluded. The default value is one.
 
 
 ```{r}
 psea_res <- runPSEA(protein = exmplData2, os.name = 'Rattus norvegicus (Rat)', nperm = 1000)
 ```
 
-The result is a list with 6 elements. The first element of this list is important: A dataframe with protein set enrichment analysis (PSEA) results. Every row corresponds to a post-translational modification (PTM) pathway with the following columns:
+The result is a list with 6 elements. The first element of this list is important: A dataframe with protein set enrichment analysis (PSEA) results. Every row corresponds to a post-translational modification (PTM) term with the following columns:
 
 - `pval`: p-value for singular enrichment analysis.
 - `pvaladj`: Adjusted p-value
 - `ES`: Enrichment score
 - `NES`: Enrichmnt score normalized to mean enrichment of random samples of the same size.
 - `nMoreExtreme`: Number of times the permuted sample resulted in profile with ES larger than abs(ES original)
-- `size`: Number of proteins in the pathway
-- `Enrichment`: Whether the proteins in the pathway have been enriched in the list.
+- `size`: Number of proteins with a particular PTM term.
+- `Enrichment`: Whether the proteins with a certain PTM term have been enriched in the list.
 - `leadingEdge`: UniProt accession code of leading edge proteins that drive the enrichment. 
 
 ```{r}
@@ -180,7 +180,7 @@ knitr::kable(psea_res[[1]], format = 'html')
 
 
 ### 4.2 Plotting   
-We now introduce the plotting features for protein set enrichment analysis. Two functions are included to visualize PSEA results returned from `runPSEA` function. The first plot is generated by `plotPSEA` function and shows Normalized Enrichment Score (NES) for each PTM pathway. User can restrict the number of pathways to draw based by adjusting sig.level parameter (default value is 0.05). The coloring of the plot indicates if the pathway is enriched or not.
+We now introduce the plotting features for protein set enrichment analysis. Two functions are included to visualize PSEA results returned from `runPSEA` function. The first plot is generated by `plotPSEA` function and shows Normalized Enrichment Score (NES) for each PTM term. User can restrict the number of PTM terms to draw based by adjusting sig.level parameter (default value is 0.05). The coloring of the plot indicates if the PTM term is enriched or not.
 
 
 ```{r fig.width=14, fig.height=12, fig.align='center'}
@@ -199,7 +199,7 @@ plotRunningScore(x = psea_res)
 
 ## 5. Translate PEIMAN results for Mass spectrometry searching tools
 
-In addition to the introduced features and extensions from previous version, the results from PEIMAN can also be utilized in Mass spectrometry searching tools. The enriched PTM terms in list of proteins generated by `runPSEA` function in the previous step can be searched in subset of protein modifications database. `psea2mass` function takes PSEA results and a significant level (default value is 0.05) and returns protein modification of statistically significant pathways for later searches in mass spectrometry tools. For example, continuing from `exmplData2` for PSEA, we call `psea2mass` function as follows:
+In addition to the introduced features and extensions from previous version, the results from PEIMAN can also be utilized in Mass spectrometry searching tools. The enriched PTM terms in list of proteins generated by `runPSEA` function in the previous step can be searched in subset of protein modifications database. `psea2mass` function takes PSEA results and a significant level (default value is 0.05) and returns protein modification of statistically significant PTM terms for later searches in mass spectrometry tools. For example, continuing from `exmplData2` for PSEA, we call `psea2mass` function as follows:
 
 ```{r}
 MS <- psea2mass(x = psea_res, sig.level = 0.05)
