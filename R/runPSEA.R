@@ -182,9 +182,9 @@ runPSEA = function(protein, os.name, blist = NULL, pexponent = 1, nperm = 1000, 
     NES[i] <- ES[i] / mean(ES_perm)
 
     if(NES[i] >= 0){
-      Enrichment[i] = 'Significant'
+      Enrichment[i] = 'Over presented'
     }else{
-      Enrichment[i] = 'Not significant'
+      Enrichment[i] = 'Under presented'
     }
 
   }
