@@ -117,13 +117,13 @@ head(psea_res[[1]], n = 6)
     ## 4              N-acetylaspartate    0       0                1            1
     ## 5              N-acetylglutamate    0       0                1            1
     ## 6                N6-acetyllysine    0       0              997           74
-    ##           ES          NES nMoreExtreme size      Enrichment
-    ## 1  0.7472783     1.181497            1  124  Over presented
-    ## 2  0.7707317     1.598456           27    4  Over presented
-    ## 3  0.9423077 -3920.000000            7    1 Under presented
-    ## 4 -0.9615385    -5.422993            2    1 Under presented
-    ## 5 -0.9663462    31.162791            3    1  Over presented
-    ## 6  0.7149518     1.118809            7   74  Over presented
+    ##           ES        NES nMoreExtreme size      Enrichment
+    ## 1  0.7472783   1.179016            0  124  Over presented
+    ## 2  0.7707317   1.436098           33    4  Over presented
+    ## 3  0.9423077 -12.750000           11    1 Under presented
+    ## 4 -0.9615385  -7.968442            2    1 Under presented
+    ## 5 -0.9663462  40.119760            5    1  Over presented
+    ## 6  0.7149518   1.129027            6   74  Over presented
     ##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               AC
     ## 1 P0C1X8; P11030; P60711; P63259; Q63028; Q62847; Q62848; Q9WUC4; P31399; P29419; P21571; P15999; D3ZAF6; Q9JJW3; O08839; P0DP29; P0DP30; P0DP31; P18418; P26772; P63039; B0K020; P08081; P08082; P45592; Q91ZN1; P11240; Q63768; P10715; P62898; Q9JHL4; Q7M0E3; P62628; Q07266; P84060; P62870; P15429; P07323; P60841; P56571; B0BN94; P55053; P55051; P07483; Q62658; Q32PX7; Q99PF5; Q5XI73; Q63228; P62994; P01946; P02091; P11517; P62959; P82995; P34058; P27321; Q5XI72; P50411; Q6AXU6; Q5BK20; P11980; Q99MZ8; Q792I0; Q66HF9; P15205; Q5M7W5; P30009; P02688; B0BN72; P30904; O35763; P62775; Q71UE8; Q9JJ19; P13084; Q01205; P08461; Q920Q0; O88767; P04785; P31044; O55012; P10111; Q6J4I0; Q9R063; Q9EPC6; P02625; Q63475; P51583; Q68A21; P02401; P62982; P62859; Q6RJR6; Q9JK11; Q63945; B0BN85; P07632; Q66HL2; P28042; O35814; P13668; P37377; Q62880; P19332; P68370; Q6P9V9; Q6AYZ1; Q68FR8; Q5XIF6; Q6PEC1; P11232; P62076; P62078; Q9WV97; P48500; P04692; P58775; Q63610; P09495; Q7M767; Q9Z1A5; P63045
     ## 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 P62986; P62982; P0CG51; Q63429
@@ -161,22 +161,25 @@ psea2mass(x = psea_res, sig.level = 0.05)
 
     ##      MOD_ID                       name
     ## 1 MOD:00060          N-acetyl-L-serine
-    ## 2 MOD:00322      1'-methyl-L-histidine
-    ## 3 MOD:00720 L-methionine (R)-sulfoxide
-    ## 4 MOD:00051   N-acetyl-L-aspartic acid
-    ## 5 MOD:00052        N-acetyl-L-cysteine
-    ## 6 MOD:00053   N-acetyl-L-glutamic acid
+    ## 2 MOD:00085         N6-methyl-L-lysine
+    ## 3 MOD:00322      1'-methyl-L-histidine
+    ## 4 MOD:00720 L-methionine (R)-sulfoxide
+    ## 5 MOD:00051   N-acetyl-L-aspartic acid
+    ## 6 MOD:00052        N-acetyl-L-cysteine
+    ## 7 MOD:00053   N-acetyl-L-glutamic acid
     ##                                                                                                                                                                                                         def
     ## 1  "converts an L-serine residue to N-acetyl-L-serine." [PubMed:11857757, PubMed:11999733, PubMed:12175151, PubMed:14730666, PubMed:15350136, PubMed:1880797, PubMed:2106685, PubMed:6997045, RESID:AA0051]
-    ## 2                              "converts an L-histidine residue to tele-methyl-L-histidine." [PubMed:10601317, PubMed:11474090, PubMed:11875433, PubMed:6692818, PubMed:8076, PubMed:8645219, RESID:AA0317]
-    ## 3                                             "oxygenates an L-methionine residue to L-methionine sulfoxide R-diastereomer." [ChEBI:45764, PubMed:21406390, PubMed:22116028, PubMed:23911929, RESID:AA0581]
-    ## 4                                                                            "converts an L-aspartic acid residue to N-acetyl-L-aspartic acid." [ChEBI:21547, PubMed:1560020, PubMed:2395459, RESID:AA0042]
-    ## 5 "converts an L-cysteine residue to N-acetyl-L-cysteine." [ChEBI:28939, PubMed:11857757, PubMed:11999733, PubMed:12175151, PubMed:14730666, PubMed:1500421, PubMed:15350136, PubMed:6725286, RESID:AA0043]
-    ## 6                                                                                            "converts an L-glutamic acid residue to N-acetyl-L-glutamic acid." [ChEBI:17533, PubMed:6725286, RESID:AA0044]
+    ## 2                                                            "converts an L-lysine residue to N6-methyl-L-lysine." [ChEBI:17604, DeltaMass:165, PubMed:11875433, PubMed:3926756, RESID:AA0076, Unimod:34#K]
+    ## 3                              "converts an L-histidine residue to tele-methyl-L-histidine." [PubMed:10601317, PubMed:11474090, PubMed:11875433, PubMed:6692818, PubMed:8076, PubMed:8645219, RESID:AA0317]
+    ## 4                                             "oxygenates an L-methionine residue to L-methionine sulfoxide R-diastereomer." [ChEBI:45764, PubMed:21406390, PubMed:22116028, PubMed:23911929, RESID:AA0581]
+    ## 5                                                                            "converts an L-aspartic acid residue to N-acetyl-L-aspartic acid." [ChEBI:21547, PubMed:1560020, PubMed:2395459, RESID:AA0042]
+    ## 6 "converts an L-cysteine residue to N-acetyl-L-cysteine." [ChEBI:28939, PubMed:11857757, PubMed:11999733, PubMed:12175151, PubMed:14730666, PubMed:1500421, PubMed:15350136, PubMed:6725286, RESID:AA0043]
+    ## 7                                                                                            "converts an L-glutamic acid residue to N-acetyl-L-glutamic acid." [ChEBI:17533, PubMed:6725286, RESID:AA0044]
     ##   FreqinSample
     ## 1           11
-    ## 2            2
+    ## 2            9
     ## 3            2
-    ## 4            1
+    ## 4            2
     ## 5            1
     ## 6            1
+    ## 7            1

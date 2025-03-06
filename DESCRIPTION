@@ -1,9 +1,9 @@
 Package: PEIMAN2
 Title: Post-Translational Modification Enrichment, Integration, and Matching Analysis
-Version: 0.1.0
+Version: 1.0.0
 Authors@R: c(
  person("Mohieddin", "Jafari", role = c("aut"),email = "mohieddin.jafari@helsinki.fi"),
- person("Payman", "Nickchi", role = c("aut","cre"),email = "pnickchi@sfu.ca")
+ person("Payman", "Nickchi", role = c("aut","cre"),email = "payman.nickchi@gmail.com")
  ) 
 Description: Functions and mined database from 'UniProt' focusing on post-translational modifications to do single enrichment analysis (SEA) and protein set enrichment analysis (PSEA). Payman Nickchi, Mehdi Mirzaie, Marc Baumann, Amir Ata Saei, Mohieddin Jafari (2022) <bioRxiv:10.1101/2022.11.09.515610>.
 License: GPL (>= 3)

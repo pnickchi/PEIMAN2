@@ -9,7 +9,7 @@
 Functions and mined database from 'UniProt' focusing on post-translational modifications to do single enrichment analysis (SEA) and protein set enrichment analysis (PSEA). Payman Nickchi, Mehdi Mirzaie, Marc Baumann, Amir Ata Saei, Mohieddin Jafari (2022) <bioRxiv:10.1101/2022.11.09.515610>.
 }
 \author{
-\strong{Maintainer}: Payman Nickchi \email{pnickchi@sfu.ca}
+\strong{Maintainer}: Payman Nickchi \email{payman.nickchi@gmail.com}
 
 Authors:
 \itemize{
