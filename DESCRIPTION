@@ -5,7 +5,7 @@ Authors@R: c(
  person("Mohieddin", "Jafari", role = c("aut"),email = "mohieddin.jafari@helsinki.fi"),
  person("Payman", "Nickchi", role = c("aut","cre"),email = "payman.nickchi@gmail.com")
  ) 
-Description: Functions and mined database from 'UniProt' focusing on post-translational modifications to do single enrichment analysis (SEA) and protein set enrichment analysis (PSEA). Payman Nickchi, Mehdi Mirzaie, Marc Baumann, Amir Ata Saei, Mohieddin Jafari (2022) <bioRxiv:10.1101/2022.11.09.515610>.
+Description: Functions and mined database from 'UniProt' focusing on post-translational modifications to do single enrichment analysis (SEA) and protein set enrichment analysis (PSEA). Payman Nickchi, Uladzislau Vadadokhau, Mehdi Mirzaie, Marc Baumann, Amir Ata Saei, Mohieddin Jafari (2025) <doi:10.1002/pmic.202400238>.
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -30,4 +30,4 @@ NeedsCompilation: no
 Packaged: 2022-10-20 01:37:04 UTC; payma
 Author: Mohieddin Jafari [aut],
   Payman Nickchi [aut, cre]
-Maintainer: Payman Nickchi <pnickchi@sfu.ca>
+Maintainer: Payman Nickchi <payman.nickchi@gmail.com>

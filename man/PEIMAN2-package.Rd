@@ -6,7 +6,7 @@
 \alias{PEIMAN2-package}
 \title{PEIMAN2: Post-Translational Modification Enrichment, Integration, and Matching Analysis}
 \description{
-Functions and mined database from 'UniProt' focusing on post-translational modifications to do single enrichment analysis (SEA) and protein set enrichment analysis (PSEA). Payman Nickchi, Mehdi Mirzaie, Marc Baumann, Amir Ata Saei, Mohieddin Jafari (2022) <bioRxiv:10.1101/2022.11.09.515610>.
+Functions and mined database from 'UniProt' focusing on post-translational modifications to do single enrichment analysis (SEA) and protein set enrichment analysis (PSEA). Payman Nickchi, Uladzislau Vadadokhau, Mehdi Mirzaie, Marc Baumann, Amir Ata Saei, Mohieddin Jafari (2025) \doi{10.1002/pmic.202400238}.
 }
 \author{
 \strong{Maintainer}: Payman Nickchi \email{payman.nickchi@gmail.com}
