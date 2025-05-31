@@ -59,11 +59,18 @@
 #'
 #' Proteins of rat hippocampus proteome.
 #'
-#' @format A dataframe with 209 rows and 2 columns.
+#' @description A test dataset of proteins identified from rat hippocampus
+#' proteome using label-free thermal proteome profiling. The score for each
+#' protein corresponds to the SEQUEST HT engine score of one arbitrary
+#' peptide-spectrum match (PSM) associated with that protein. This dataset is
+#' provided to demonstrate how a ranked list of proteins can be used within the
+#' PEIMAN2 package.
+#'
+#' @format A data frame with 209 rows and 2 columns:
 #' \describe{
 #'   \item{UniProtAC}{UniProt accession code of proteins}
-#'   \item{Score}{Check with MJ}
+#'   \item{Score}{SEQUEST HT score of one associated PSM (used for demonstration purposes)}
 #'   ...
 #' }
-#' @source \doi{molpharm.120.000210}
+#' @source \url{https://pubmed.ncbi.nlm.nih.gov/33632781/}
 'exmplData2'
