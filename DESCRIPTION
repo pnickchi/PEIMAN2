@@ -1,6 +1,6 @@
 Package: PEIMAN2
 Title: Post-Translational Modification Enrichment, Integration, and Matching Analysis
-Version: 1.0.1
+Version: 1.0.2
 Authors@R: c(
  person("Mohieddin", "Jafari", role = c("aut"),email = "mohieddin.jafari@helsinki.fi"),
  person("Payman", "Nickchi", role = c("aut","cre"),email = "payman.nickchi@gmail.com")
