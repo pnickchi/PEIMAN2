@@ -25,6 +25,7 @@ utils::globalVariables(
     'corrected pvalue',
     'mod_ont',
     'FreqinSample',
-    'FreqinPopulation'
+    'FreqinPopulation',
+    'id'
   )
 )
