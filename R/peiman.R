@@ -1,8 +1,45 @@
+#' Run internal PEIMAN singular enrichment analysis
+#'
+#' @description
+#' Internal helper function used by \code{\link{runEnrichment}} to run singular
+#' enrichment analysis for a given protein list, organism, background list, and
+#' PEIMAN database version.
+#'
+#' @param pro A character vector of UniProt accession codes.
+#'
+#' @param os A character string giving the exact taxonomy name of the organism.
+#'
+#' @param background Optional character vector of UniProt accession codes to use
+#'   as the background protein list. If \code{NULL}, all reviewed proteins for
+#'   the selected organism in the PEIMAN database are used as the background.
+#'
+#' @param am Character string specifying the p-value adjustment method. This is
+#'   passed to \code{\link[stats]{p.adjust}}.
+#'
+#' @param db_version Character string specifying which PEIMAN database version to
+#'   use. Use \code{'bundled'} for the database included with the package,
+#'   \code{'latest'} for the newest cached database, or a specific version such
+#'   as \code{'2026-05-01'}.
+#'
+#' @return A list with two elements:
+#' \describe{
+#'   \item{\code{enrich}}{A data frame containing the enrichment results.}
+#'   \item{\code{ms}}{A character vector of proteins missing from the selected
+#'   PEIMAN database.}
+#' }
+#'
+#' @details
+#' This function is intended for internal package use. User-facing enrichment
+#' analysis should be performed with \code{\link{runEnrichment}}.
+#'
+#' @keywords internal
+#'
 #' @importFrom magrittr %>%
 #' @importFrom stats phyper
 #' @importFrom stats p.adjust
-#' @importFrom dplyr arrange
-peiman <- function(pro, os, background = NULL, am){
+#' @importFrom dplyr arrange filter group_split
+#' @importFrom purrr map
+peiman <- function(pro, os, background = NULL, am, db_version = 'bundled'){
 
   #
   # pro: A character vector of proteins
@@ -20,6 +57,7 @@ peiman <- function(pro, os, background = NULL, am){
     )
   }
 
+  peiman_database <- load_peiman_database(version = db_version)
 
   #
   # Filter peiman database to include os specific proteins
