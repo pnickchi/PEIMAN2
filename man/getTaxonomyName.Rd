@@ -4,10 +4,15 @@
 \alias{getTaxonomyName}
 \title{Return the exact taxonomy name for list of protein}
 \usage{
-getTaxonomyName(x)
+getTaxonomyName(x, database_version = "bundled")
 }
 \arguments{
 \item{x}{A character vector with each entry presenting a protein UniProt accession code.}
+
+\item{database_version}{Character string specifying which PEIMAN database
+version to use. The default is \code{'bundled'}, which uses the database
+included with the package. Use \code{'latest'} for the newest cached
+database, or a specific version such as \code{'2026_05_01'}.}
 }
 \value{
 The exact taxonomy name

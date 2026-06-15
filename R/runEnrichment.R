@@ -4,17 +4,25 @@
 #'   runs singular enrichment (SEA) analysis, and returns enrichment results.
 #'
 #' @param protein A character vector with protein UniProt accession codes.
+#'
 #' @param os.name A character vector of length one with exact taxonomy name of
 #'   species. If you do not know the the exact taxonomy name of species you are
 #'   working with, please read \code{\link{getTaxonomyName}}.
+#'
 #' @param blist The background list will be substituted with the complete set of
 #'   UniProt reviewed proteins to facilitate the analysis with a background
 #'   list. The default value is NULL. Alternatively, if a vector of UniProt
 #'   Accession Codes is provided, it will serve as the background list for the
 #'   enrichment analysis.
+#'
 #' @param p.adj.method The adjustment method to correct for multiple testing.
 #'   The default value is 'BH'. Run/see \code{\link[stats]{p.adjust.methods}} to
 #'   get a list of possible methods.
+#'
+#' @param database_version Character string specifying which PEIMAN database
+#'   version to use. The default is \code{'bundled'}, which uses the database
+#'   included with the package. Use \code{'latest'} for the newest cached
+#'   database, or a specific version such as \code{'2026-05-01'}.
 #'
 #' @return The result is a dataframe with the following columns:
 #' - PTM: Post-translational modification (PTM) keyword
@@ -30,7 +38,8 @@
 #'
 #' @examples
 #' enrich1 <- runEnrichment(protein = exmplData1$pl1, os.name = 'Homo sapiens (Human)')
-runEnrichment = function(protein, os.name, blist = NULL, p.adj.method = 'BH'){
+#'
+runEnrichment = function(protein, os.name, blist = NULL, p.adj.method = 'BH', database_version = 'bundled'){
 
   #####################################
   # Step 1: Check the input arguments #
@@ -42,12 +51,13 @@ runEnrichment = function(protein, os.name, blist = NULL, p.adj.method = 'BH'){
 
 
   if( !is.vector(protein) | !is.character(protein) ){
-    stop('protein muse be a character vector.')
+    stop('protein must be a character vector.')
   }
 
+  peiman_database <- load_peiman_database(version = database_version)
 
   if( sum(protein %in% peiman_database$AC) == 0 ){
-    stop('None of the input proteins are in current version of PEIMAN databse. \n Updating to the latest version of package might help.')
+    stop('None of the input proteins are in current version of PEIMAN database. \n Updating to the latest version of package might help.')
   }
 
 
@@ -80,9 +90,9 @@ runEnrichment = function(protein, os.name, blist = NULL, p.adj.method = 'BH'){
   ##############################################################################
 
   if( is.null(blist) ){
-    res <- peiman(pro = protein, os = os.name, background = NULL, am = p.adj.method)
+    res <- peiman(pro = protein, os = os.name, background = NULL, am = p.adj.method, db_version = database_version)
   }else{
-    res <- peiman(pro = protein, os = os.name, background = blist, am = p.adj.method)
+    res <- peiman(pro = protein, os = os.name, background = blist, am = p.adj.method, db_version = database_version)
   }
 
   if( length(res[[2]]) ){
