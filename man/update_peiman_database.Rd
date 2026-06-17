@@ -2,32 +2,41 @@
 % Please edit documentation in R/database.R
 \name{update_peiman_database}
 \alias{update_peiman_database}
-\title{Download and cache a PEIMAN database version}
+\title{Download and cache PEIMAN2 external data files}
 \usage{
-update_peiman_database(version = "latest", refresh = FALSE)
+update_peiman_database(version = "latest", refresh = FALSE, type = "all")
 }
 \arguments{
-\item{version}{Character string specifying which database version to
-download. The default is \code{'latest'}, which downloads the newest
-available database version listed in the online database log. A specific
-version such as \code{'2026_05_01'} can also be supplied.}
+\item{version}{Character string specifying which version to download. The
+default is \code{'latest'}, which downloads the newest available version
+for the selected file type listed in the online configuration file. A
+specific version such as \code{'2026-05-01'} can also be supplied.}
 
-\item{refresh}{Logical. If \code{FALSE}, the database is not downloaded again
-if it already exists in the local cache. If \code{TRUE}, the database is
-downloaded again and replaces the cached file.}
+\item{refresh}{Logical. If \code{FALSE}, a file is not downloaded again if it
+already exists in the local cache. If \code{TRUE}, the file is downloaded
+again and replaces the cached file.}
+
+\item{type}{Character string specifying which file type to download. Use
+\code{'database'} for the main PEIMAN database, \code{'ptmlist'} for the
+UniProt PTM list, or \code{'all'} to download both. The default is
+\code{'all'}.}
 }
 \value{
-Invisibly returns the path to the cached database file.
+Invisibly returns the path or paths to the cached file(s).
 }
 \description{
-Downloads a PEIMAN database file from the online PEIMAN database repository
-and stores it in the user's local PEIMAN2 cache directory.
+Downloads external PEIMAN2 data files from the online PEIMAN2 database
+repository and stores them in the user's local PEIMAN2 cache directory.
+This can include the main PEIMAN database, the UniProt PTM list, or both.
 }
 \details{
-Database files are stored in the PEIMAN2 user cache directory:
+Cached files are stored in the PEIMAN2 user cache directory:
 
 \code{tools::R_user_dir('PEIMAN2', which = 'cache')}
 
 This function requires internet access. It is not called automatically when
 the package is loaded.
+
+The online configuration file contains at least the following
+columns: \code{type}, \code{version}, \code{file}, and \code{url}.
 }

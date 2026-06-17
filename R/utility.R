@@ -108,7 +108,7 @@ load_peiman_database <- function(version = 'bundled'){
 
   if (version == 'latest') {
 
-    files <- list.files(cache_dir, pattern = '^peiman_database_\\d{4}_\\d{2}_\\d{2}\\.rds$', full.names = TRUE)
+    files <- list.files(cache_dir, pattern = '^peiman_database_\\d{4}-\\d{2}-\\d{2}\\.rds$', full.names = TRUE)
 
     if (length(files) == 0) {
       stop(

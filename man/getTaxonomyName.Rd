@@ -12,7 +12,7 @@ getTaxonomyName(x, database_version = "bundled")
 \item{database_version}{Character string specifying which PEIMAN database
 version to use. The default is \code{'bundled'}, which uses the database
 included with the package. Use \code{'latest'} for the newest cached
-database, or a specific version such as \code{'2026_05_01'}.}
+database, or a specific version such as \code{'2026-05-01'}.}
 }
 \value{
 The exact taxonomy name

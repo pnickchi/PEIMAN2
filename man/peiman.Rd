@@ -21,7 +21,7 @@ passed to \code{\link[stats]{p.adjust}}.}
 \item{db_version}{Character string specifying which PEIMAN database version to
 use. Use \code{'bundled'} for the database included with the package,
 \code{'latest'} for the newest cached database, or a specific version such
-as \code{'2026_05_01'}.}
+as \code{'2026-05-01'}.}
 }
 \value{
 A list with two elements:

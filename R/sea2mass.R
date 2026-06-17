@@ -7,6 +7,10 @@
 #' @param sig.level The significance level to filter pathways (applies on adjusted p-value). Default value is 0.05.
 #' @param number.rep Only consider PTM terms that occurred more than a specific number of times in UniProt. This number is set
 #' by number.rep parameter. The default value is NULL.
+#' @param ptmlist_version Character string specifying which UniProt PTM list
+#'   version to use. The default is \code{'bundled'}, which uses the PTM list
+#'   included with the package. Use \code{'latest'} for the newest cached PTM
+#'   list, or a specific version such as \code{'2026-06-15'}.
 #' @return A database of subset of protein modifications:
 #' - id: a unique identification for each subset of protein modifications, PSI-MOD.
 #' - name: the name of modification.
@@ -17,7 +21,7 @@
 #' @examples
 #' enrich1 <- runEnrichment(protein = exmplData1$pl1, os.name = 'Homo sapiens (Human)')
 #' MS      <- sea2mass(x = enrich1, sig.level = 0.05)
-sea2mass = function(x, sig.level = 0.05, number.rep = NULL){
+sea2mass = function(x, sig.level = 0.05, number.rep = NULL, ptmlist_version = 'bundled'){
 
   x <- x %>% filter(`corrected pvalue` <= sig.level)
 
@@ -29,7 +33,8 @@ sea2mass = function(x, sig.level = 0.05, number.rep = NULL){
 
   pathway <- as.character(x$PTM)
 
-  # look up each pathway in https://www.uniprot.org/docs/ptmlist.txt
+  ptmlist <- load_ptmlist(version = ptmlist_version)
+
   temp <- ptmlist %>% filter( ID %in% pathway )
 
 
