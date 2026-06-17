@@ -6,10 +6,10 @@ README
 
 <!-- badges: start -->
 
-[![CRAN
-status](https://www.r-pkg.org/badges/version/PEIMAN2)](https://cran.r-project.org/package=PEIMAN2)
-[![Github All
-Releases](https://cranlogs.r-pkg.org/badges/PEIMAN2)](https://github.com/pnickchi/PEIMAN2)
+[![CRAN status](https://www.r-pkg.org/badges/version/PEIMAN2)](https://CRAN.R-project.org/package=PEIMAN2)
+[![CRAN downloads](https://cranlogs.r-pkg.org/badges/grand-total/PEIMAN2)](https://cran.r-project.org/package=PEIMAN2)
+[![Monthly downloads](https://cranlogs.r-pkg.org/badges/PEIMAN2)](https://cran.r-project.org/package=PEIMAN2)
+[![R-CMD-check](https://github.com/pnickchi/PEIMAN2/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/pnickchi/PEIMAN2/actions/workflows/R-CMD-check.yaml)
 
 <!-- badges: end -->
 
