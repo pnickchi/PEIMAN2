@@ -15,7 +15,7 @@ README
 
 The PEIMAN2 package provides functions and a mined UniProt-based database for
 singular enrichment analysis (SEA) and protein set enrichment analysis (PSEA)
-using lists of proteins.
+using lists of proteins..
 
 PEIMAN2 includes a bundled internal database so that the package works
 immediately after installation and remains suitable for CRAN examples and
