@@ -13,12 +13,15 @@ Releases](https://cranlogs.r-pkg.org/badges/PEIMAN2)](https://github.com/pnickch
 
 <!-- badges: end -->
 
-The PEIMAN2 package @PEIMAN2 provides functions and mined database from
-UniProt for single enrichment analysis (SEA) and protein set enrichment
-analysis (PSEA) in a list of protein. The database is updated regularly
-with monthly changes in UniProt/SwissProt repository. To ensure you have
-the latest version of database, make sure to install the package from
-GitHub.
+The PEIMAN2 package provides functions and a mined UniProt-based database for
+singular enrichment analysis (SEA) and protein set enrichment analysis (PSEA)
+using lists of proteins.
+
+PEIMAN2 includes a bundled internal database so that the package works
+immediately after installation and remains suitable for CRAN examples and
+checks. However, the PEIMAN database and UniProt PTM list are updated over time.
+Users who want the most recent external data can download and cache updated
+versions directly from the PEIMAN2 database repository [here](https://github.com/pnickchi/PEIMAN2-database).
 
 ## Installation
 
@@ -37,6 +40,81 @@ devtools::install_github("jafarilab/PEIMAN2")
 # or
 devtools::install_github("pnickchi/PEIMAN2")
 ```
+
+## Database updates
+
+By default, PEIMAN2 uses the bundled database included with the installed
+package version:
+
+``` r
+enrich1 <- runEnrichment(
+  protein = exmplData1$pl1,
+  os.name = "Homo sapiens (Human)"
+)
+```
+
+To download and cache the latest available external PEIMAN database and UniProt
+PTM list, use:
+
+``` r
+update_peiman_database()
+```
+
+After updating the cache, you can run enrichment analysis with the latest cached
+database:
+
+``` r
+enrich_latest <- runEnrichment(
+  protein = exmplData1$pl1,
+  os.name = "Homo sapiens (Human)",
+  database_version = "latest"
+)
+```
+
+You can also download and use a specific database version for reproducible
+analysis:
+
+``` r
+update_peiman_database(version = "2026-06-15")
+
+enrich_2026_06_15 <- runEnrichment(
+  protein = exmplData1$pl1,
+  os.name = "Homo sapiens (Human)",
+  database_version = "2026-06-15"
+)
+```
+
+For mass spectrometry translation functions, the UniProt PTM list version can
+also be selected. For example:
+
+``` r
+MS_latest <- sea2mass(
+  x = enrich_latest,
+  sig.level = 0.05,
+  ptmlist_version = "latest"
+)
+```
+
+or with a specific cached PTM list version:
+
+``` r
+MS_2026_06_15 <- sea2mass(
+  x = enrich_2026_06_15,
+  sig.level = 0.05,
+  ptmlist_version = "2026-06-15"
+)
+```
+
+The downloaded files are stored in the user's local PEIMAN2 cache directory:
+
+``` r
+tools::R_user_dir("PEIMAN2", which = "cache")
+```
+
+The default value is `database_version = "bundled"`, which uses the internal
+database included in the version of the package installed from CRAN. This means
+that package loading, examples, and standard workflows do not require internet
+access.
 
 ## Example
 
