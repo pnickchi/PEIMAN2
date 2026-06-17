@@ -28,7 +28,7 @@ in this readme file.
 ## Installation
 
 You can install the released version of PEIMAN from CRAN
-[here]([https://CRAN.R-project.org](https://cran.r-project.org/web/packages/PEIMAN2/index.html)) with:
+[here](https://cran.r-project.org/web/packages/PEIMAN2/index.html) with:
 
 ``` r
 install.packages("PEIMAN2")
