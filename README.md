@@ -43,7 +43,7 @@ devtools::install_github("jafarilab/PEIMAN2")
 devtools::install_github("pnickchi/PEIMAN2")
 ```
 
-## Database updates
+## Database Updates
 
 By default, PEIMAN2 uses the bundled database included with the installed
 package version:
@@ -165,7 +165,7 @@ pl2 <- exmplData1$pl2
 enrich2 <- runEnrichment(protein = pl2, os.name = 'Homo sapiens (Human)')
 ```
 
-### Plotting SEA for one list
+### Plotting SEA for One Protein List
 
 ``` r
 plotEnrichment(x = enrich1, sig.level = 0.05)
@@ -255,7 +255,7 @@ plotRunningScore(x = psea_res, nplot = 8)
 
 ![](README_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->![](README_files/figure-gfm/unnamed-chunk-9-2.png)<!-- -->
 
-### Translate PEIMAN results for Mass spectrometry searching tools
+### Translate PEIMAN Results for Mass Spectrometry Searching Tools
 
 ``` r
 psea2mass(x = psea_res, sig.level = 0.05)
