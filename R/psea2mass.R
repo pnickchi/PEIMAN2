@@ -11,6 +11,10 @@
 #' @param number.rep Only consider PTM terms that occurred more than a specific
 #'   number of times in UniProt. This number is set by number.rep parameter. The
 #'   default value is NULL.
+#' @param ptmlist_version Character string specifying which UniProt PTM list
+#'   version to use. The default is \code{'bundled'}, which uses the PTM list
+#'   included with the package. Use \code{'latest'} for the newest cached PTM
+#'   list, or a specific version such as \code{'2026-06-15'}.
 #'
 #' @return A database of subset of protein modifications:
 #' - id: a unique identification for each subset of protein modifications, PSI-MOD.
@@ -27,7 +31,7 @@
 #' # to accommodate CRAN policy on examples (run time <= 5 seconds).
 #' psea_res <- runPSEA(protein = exmplData2, os.name = 'Rattus norvegicus (Rat)', nperm = 10)
 #' MS <- psea2mass(x = psea_res, sig.level = 0.05)
-psea2mass = function(x, sig.level = 0.05, number.rep = NULL){
+psea2mass = function(x, sig.level = 0.05, number.rep = NULL, ptmlist_version = 'bundled'){
 
   temp    <- x[[1]] %>% filter( (nMoreExtreme / x[[6]]) <= sig.level )
 
@@ -38,6 +42,8 @@ psea2mass = function(x, sig.level = 0.05, number.rep = NULL){
   if(nrow(temp) == 0){
     stop('No PTMS passing number.rep threshold.')
   }
+
+  ptmlist <- load_ptmlist(version = ptmlist_version)
 
   pathway <- data.frame( PTM = as.character(temp$PTM), FreqinSample = temp$FreqinSample )
 

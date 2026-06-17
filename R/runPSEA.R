@@ -26,6 +26,11 @@
 #'   p-value)
 #' @param minSize PTMs with the number of proteins below this threshold are
 #'   excluded.
+#' @param database_version Character string specifying which PEIMAN database
+#'   version to use. The default is \code{'bundled'}, which uses the database
+#'   included with the package. Use \code{'latest'} for the newest cached
+#'   database, or a specific version such as \code{'2026-05-01'}.
+#'
 #' @return Returns a list of 6: 1: A dataframe with protein set enrichment
 #'   analysis (PSEA) results. Every row corresponds to a post-translational
 #'   modification (PTM) keyword.
@@ -51,8 +56,15 @@
 #' # The number of permutations was reduced to 10
 #' # to accommodate CRAN policy on examples (run time <= 5 seconds).
 #' psea_res <- runPSEA(protein = exmplData2, os.name = 'Rattus norvegicus (Rat)', nperm = 10)
-runPSEA = function(protein, os.name, blist = NULL, pexponent = 1, nperm = 1000, p.adj.method = 'fdr', sig.level = 0.05, minSize = 1){
-
+runPSEA = function(protein,
+                   os.name,
+                   blist = NULL,
+                   pexponent = 1,
+                   nperm = 1000,
+                   p.adj.method = 'fdr',
+                   sig.level = 0.05,
+                   minSize = 1,
+                   database_version = 'bundled'){
 
   ########################################################
   # Step 1: Check the input arguments
@@ -99,9 +111,9 @@ runPSEA = function(protein, os.name, blist = NULL, pexponent = 1, nperm = 1000, 
 
   # Run ordinary enrichment
   if( is.null(blist) ){
-    enrich <- peiman(pro = protein[,1], os = os.name, background = NULL, am = p.adj.method)
+    enrich <- peiman(pro = protein[,1], os = os.name, background = NULL, am = p.adj.method, db_version = database_version)
   }else{
-    enrich <- peiman(pro = protein[,1], os = os.name, background = blist, am = p.adj.method)
+    enrich <- peiman(pro = protein[,1], os = os.name, background = blist, am = p.adj.method, db_version = database_version)
   }
 
 

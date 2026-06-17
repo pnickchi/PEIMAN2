@@ -4,7 +4,13 @@
 \alias{runEnrichment}
 \title{Run singular enrichment analysis (SEA) for a given list of protein}
 \usage{
-runEnrichment(protein, os.name, blist = NULL, p.adj.method = "BH")
+runEnrichment(
+  protein,
+  os.name,
+  blist = NULL,
+  p.adj.method = "BH",
+  database_version = "bundled"
+)
 }
 \arguments{
 \item{protein}{A character vector with protein UniProt accession codes.}
@@ -22,6 +28,11 @@ enrichment analysis.}
 \item{p.adj.method}{The adjustment method to correct for multiple testing.
 The default value is 'BH'. Run/see \code{\link[stats]{p.adjust.methods}} to
 get a list of possible methods.}
+
+\item{database_version}{Character string specifying which PEIMAN database
+version to use. The default is \code{'bundled'}, which uses the database
+included with the package. Use \code{'latest'} for the newest cached
+database, or a specific version such as \code{'2026-05-01'}.}
 }
 \value{
 The result is a dataframe with the following columns:
@@ -42,4 +53,5 @@ runs singular enrichment (SEA) analysis, and returns enrichment results.
 }
 \examples{
 enrich1 <- runEnrichment(protein = exmplData1$pl1, os.name = 'Homo sapiens (Human)')
+
 }

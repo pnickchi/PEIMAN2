@@ -12,7 +12,8 @@ runPSEA(
   nperm = 1000,
   p.adj.method = "fdr",
   sig.level = 0.05,
-  minSize = 1
+  minSize = 1,
+  database_version = "bundled"
 )
 }
 \arguments{
@@ -46,6 +47,11 @@ p-value)}
 
 \item{minSize}{PTMs with the number of proteins below this threshold are
 excluded.}
+
+\item{database_version}{Character string specifying which PEIMAN database
+version to use. The default is \code{'bundled'}, which uses the database
+included with the package. Use \code{'latest'} for the newest cached
+database, or a specific version such as \code{'2026-05-01'}.}
 }
 \value{
 Returns a list of 6: 1: A dataframe with protein set enrichment
