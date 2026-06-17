@@ -22,7 +22,8 @@ immediately after installation and remains suitable for CRAN examples and
 checks. However, the PEIMAN database and UniProt PTM list are updated over time.
 Users who want the most recent external data can download and cache updated
 versions directly from the PEIMAN2 database repository [here](https://github.com/pnickchi/PEIMAN2-database)
-or update their local database manually by following steps in **Database Updates** section in this readme file.
+or update their local database manually by following steps in **Database Updates** [section](https://github.com/pnickchi/PEIMAN2/blob/main/README.md#database-updates) 
+in this readme file.
 
 ## Installation
 
