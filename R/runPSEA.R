@@ -180,7 +180,7 @@ runPSEA = function(protein,
     }
 
     # permute scores nperm times, save in perm_value, and extract in ES_perm
-    perm_value  <- purrr::rerun(nperm, psea(x = protein, y = pro.pathway, p = pexponent, perm = TRUE) )
+    perm_value  <- lapply(seq_len(nperm), function(i) psea(x = protein, y = pro.pathway, p = pexponent, perm = TRUE) )
     ES_perm     <- unlist( sapply(X = perm_value, FUN = calculateES)[2,] )
 
     # Count number of times that permuted values are greater than ES[i]
