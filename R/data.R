@@ -72,5 +72,5 @@
 #'   \item{Score}{SEQUEST HT score of one associated PSM (used for demonstration purposes)}
 #'   ...
 #' }
-#' @source \url{https://pubmed.ncbi.nlm.nih.gov/33632781/}
+#' @source \doi{10.1124/molpharm.120.000210}
 'exmplData2'

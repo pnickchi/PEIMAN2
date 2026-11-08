@@ -13,7 +13,7 @@ A data frame with 209 rows and 2 columns:
 }
 }
 \source{
-\url{https://pubmed.ncbi.nlm.nih.gov/33632781/}
+\doi{10.1124/molpharm.120.000210}
 }
 \usage{
 exmplData2
